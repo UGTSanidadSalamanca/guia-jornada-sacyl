@@ -1,0 +1,67 @@
+/* style.css */
+
+body { font-family: 'Inter', sans-serif; }
+.active-tab {
+    background-color: #E4002B; /* UGT Red */
+    color: white;
+    border-color: #E4002B;
+}
+.inactive-tab {
+    background-color: #f0f4f8; /* Lighter slate for inactive */
+    color: #334155;
+    border-color: #cbd5e1; /* Slate border */
+}
+.nav-btn:hover:not(.active-tab) {
+    background-color: #fecaca; /* Light red on hover for inactive */
+    color: #E4002B;
+    border-color: #E4002B;
+}
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    max-height: 350px;
+}
+@media (min-width: 768px) {
+    .chart-container {
+        height: 350px;
+    }
+}
+/* UGT Red */
+.ugt-bg-red {
+    background-color: #E4002B; /* A common UGT red */
+}
+.ugt-text-red {
+    color: #E4002B;
+}
+.ugt-border-red {
+    border-color: #E4002B;
+}
+.ugt-accent-bg {
+    background-color: #fef2f2; /* Very light red for accents */
+}
+.ugt-accent-border {
+    border-color: #fca5a5; /* Light red border */
+}
+/* Custom style for range input thumb and track color */
+input[type="range"]::-webkit-slider-thumb {
+    background-color: #E4002B; /* UGT Red */
+}
+input[type="range"]::-moz-range-thumb {
+    background-color: #E4002B; /* UGT Red */
+}
+input[type="range"]::-ms-thumb {
+    background-color: #E4002B; /* UGT Red */
+}
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #fca5a5; /* Light red track */
+}
+input[type="range"]::-moz-range-track {
+    background-color: #fca5a5; /* Light red track */
+}
+input[type="range"]::-ms-track {
+    background-color: #fca5a5; /* Light red track */
+}
