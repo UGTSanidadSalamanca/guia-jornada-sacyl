@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Calculadora Interactiva de Días de Descanso Anuales</title>
+    <!-- Enlace a Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Enlace a Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Enlace a Google Fonts para la fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Enlace a tu archivo de estilos CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-5xl font-extrabold ugt-text-red mb-4 leading-tight flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+                <img src="https://placehold.co/60x60/E4002B/FFFFFF?text=UGT" alt="Logotipo de UGT Sanidad Salamanca" class="h-12 w-12 md:h-16 md:w-16 rounded-full border-4 border-white shadow-md">
+                <span class="block">UGT Sanidad Salamanca</span>
+                <span class="block text-teal-700 text-xl md:text-3xl font-bold mt-0 md:mt-2">Tu Calculadora Interactiva de Días de Descanso Anuales</span>
+            </h1>
+            <p class="text-slate-700 max-w-3xl mx-auto text-lg">Explora de forma sencilla tu jornada, vacaciones y permisos, y entiende cómo se registran en la aplicación AIDA. ¡Defendemos tus derechos!</p>
+        </header>
+
+        <nav class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+            <button id="btn-jornada" class="nav-btn active-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="jornada">🕰️ Jornada</button>
+            <button id="btn-vacaciones" class="nav-btn inactive-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="vacaciones">✈️ Vacaciones</button>
+            <button id="btn-libre-disposicion" class="nav-btn inactive-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="libre-disposicion">🗓️ Días Libre Disposición</button>
+            <button id="btn-permisos" class="nav-btn inactive-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="permisos">📋 Permisos</button>
+            <button id="btn-codigos" class="nav-btn inactive-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="codigos">🔍 Códigos AIDA</button>
+            <button id="btn-resumen-global" class="nav-btn inactive-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="resumen-global">✨ Resumen Global</button>
+        </nav>
+
+        <main id="main-content">
+
+            <!-- SECCIÓN JORNADA -->
+            <section id="tab-jornada" class="tab-content bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold ugt-text-red mb-4">Tu Jornada Laboral</h2>
+                <p class="text-slate-600 mb-6">Esta sección resume los aspectos clave de tu jornada de trabajo en SACYL, desde el cómputo de horas anual hasta la gestión de turnos. El objetivo es que conozcas las reglas fundamentales que estructuran tu día a día laboral y cómo el sistema AIDA las registra.</p>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="ugt-accent-bg p-4 rounded-lg ugt-border-red border-l-4">
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">Jornada Ordinaria Anual (Diurna)</h3>
+                        <p class="text-4xl font-bold ugt-text-red">1.519 <span class="text-2xl font-semibold text-slate-500">horas</span></p>
+                        <p class="text-slate-500 mt-1">(Para personal con turno de mañanas fijas o Atención Primaria.)</p>
+                    </div>
+                    <div class="ugt-accent-bg p-4 rounded-lg ugt-border-red border-l-4">
+                        <h3 class="font-bold text-lg mb-2 text-slate-800">Reglas Clave</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700">
+                            <li>El <span class="font-semibold ugt-text-red">exceso de horas</span> se compensa con descanso, no económicamente.</li>
+                            <li>Los <span class="font-semibold ugt-text-red">cambios de turno</span> deben solicitarse con 1 semana de antelación.</li>
+                            <li>Las <span class="font-semibold ugt-text-red">guardias localizadas y mixtas</span> no tienen ponderación en el cómputo de horas.</li>
+                            <li>A los trabajadores con contrato en vigor que comprenda los días 24 y 31 de diciembre les corresponden <span class="font-semibold ugt-text-red">7 horas</span> por cada uno de estos días.</li>
+                            <li>A los trabajadores con turno de mañanas fijas de lunes a viernes se les añade <span class="font-semibold ugt-text-red">un día</span> por cada sábado festivo en el año en curso.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ugt-accent-bg p-4 rounded-lg mb-8 ugt-border-red border-l-4">
+                    <h3 class="font-bold text-lg mb-2 text-slate-800">Calculadora de Jornada por Noches Anuales (2025)</h3>
+                    <p class="text-slate-600 mb-4">Introduce el número de noches anuales trabajadas para ver cómo afecta tu cómputo de jornada anual, según la tabla oficial para el personal de turno rotatorio o nocturno de 2025.</p>
+                    <label for="night-shifts-input" class="block font-semibold text-slate-700 mb-2">Número de Noches Anuales (1-142):</label>
+                    <input type="number" id="night-shifts-input" min="0" max="142" value="0" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-ugt-text-red focus:border-ugt-text-red transition">
+                    <div class="mt-4 text-center bg-white p-4 rounded-md shadow-sm">
+                        <p class="text-slate-600">Tu jornada anual ajustada es:</p>
+                        <p id="adjusted-annual-hours" class="text-4xl font-bold ugt-text-red">1.485 <span class="text-2xl font-semibold text-slate-500">horas</span></p>
+                        <p id="night-shift-message" class="text-sm text-slate-500 mt-2"></p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4 text-center ugt-text-red">Tipos de Turno y sus Códigos AIDA</h3>
+                    <div id="shift-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN VACACIONES -->
+            <section id="tab-vacaciones" class="tab-content hidden bg-white p-6 rounded-xl shadow-lg">
+                 <h2 class="text-2xl font-bold ugt-text-red mb-4">Tus Vacaciones</h2>
+                <p class="text-slate-600 mb-6">Aquí puedes calcular los días de vacaciones que te corresponden según tu antigüedad y visualizar cómo se componen. Además, encontrarás las reglas principales sobre cómo y cuándo puedes disfrutarlas, junto con los códigos que utiliza AIDA para gestionarlas.</p>
+                
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="font-bold text-lg mb-4 text-slate-800">Calculadora de Días por Antigüedad</h3>
+                        <div class="ugt-accent-bg p-4 rounded-lg ugt-border-red border-l-4">
+                            <label for="antiquity-slider" class="block font-semibold text-slate-700 mb-2">Años de servicio en SACYL:</label>
+                            <input type="range" id="antiquity-slider" min="0" max="39" value="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-ugt-red">
+                            <div id="vacation-slider-labels" class="flex justify-between text-xs text-slate-500 mt-1">
+                                <!-- Labels will be dynamically inserted here by JavaScript -->
+                            </div>
+                            <div class="mt-4 text-center bg-white p-4 rounded-md shadow-sm">
+                                <p class="text-slate-600">Con <span id="vacation-antiquity-years" class="font-bold ugt-text-red">10</span> años de servicio, te corresponden:</p>
+                                <p id="total-vacation-days" class="text-4xl font-bold ugt-text-red">22 <span class="text-2xl font-semibold text-slate-500">días</span></p>
+                            </div>
+                        </div>
+
+                        <h3 class="font-bold text-lg mb-4 mt-8 text-slate-800">Reglas Clave de Disfrute</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700 ugt-accent-bg p-4 rounded-lg ugt-border-red border-l-4">
+                           <li>Base de <span class="font-semibold ugt-text-red">22 días hábiles</span> anuales.</li>
+                           <li>Fraccionamiento en hasta <span class="font-semibold ugt-text-red">4 periodos</span> (mínimo 7 días consecutivos por periodo).</li>
+                           <li>Disfrute dentro del año natural o <span class="font-semibold ugt-text-red">hasta el 15 de enero</span> del siguiente.</li>
+                           <li>No son compensables económicamente (salvo fin de contrato).</li>
+                           <li>Las <span class="font-semibold ugt-text-red">vacaciones por antigüedad</span> no descuentan horas del cómputo anual de jornada.</li>
+                        </ul>
+                    </div>
+                    <div>
+                         <h3 class="font-bold text-lg mb-4 text-center ugt-text-red">Composición de tus Vacaciones</h3>
+                         <div class="chart-container">
+                            <canvas id="vacation-chart"></canvas>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 mt-6 text-center ugt-text-red">Códigos AIDA de Vacaciones</h3>
+                        <div id="vacation-codes-grid" class="grid grid-cols-2 gap-2 text-xs text-center">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN DÍAS DE LIBRE DISPOSICIÓN -->
+            <section id="tab-libre-disposicion" class="tab-content hidden bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold ugt-text-red mb-4">Tus Días de Libre Disposición</h2>
+                <p class="text-slate-600 mb-6">Calcula tus días de libre disposición y los adicionales por antigüedad. Entiende cómo se componen y las reglas para su disfrute, junto con sus códigos en AIDA.</p>
+                
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="font-bold text-lg mb-4 text-slate-800">Calculadora de Días por Antigüedad</h3>
+                        <div class="ugt-accent-bg p-4 rounded-lg ugt-border-red border-l-4">
+                            <label for="antiquity-slider-ld" class="block font-semibold text-slate-700 mb-2">Años de servicio en SACYL:</label>
+                            <input type="range" id="antiquity-slider-ld" min="0" max="39" value="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-ugt-red">
+                            <div id="ld-slider-labels" class="flex justify-between text-xs text-slate-500 mt-1">
+                                <!-- Labels will be dynamically inserted here by JavaScript -->
+                            </div>
+                            <div class="mt-4 text-center bg-white p-4 rounded-md shadow-sm">
+                                <p class="text-slate-600">Con <span id="ld-antiquity-years" class="font-bold ugt-text-red">10</span> años de servicio, te corresponden:</p>
+                                <p id="total-ld-days" class="text-4xl font-bold ugt-text-red">6 <span class="text-2xl font-semibold text-slate-500">días</span></p>
+                            </div>
+                        </div>
+
+                        <h3 class="font-bold text-lg mb-4 mt-8 text-slate-800">Reglas Clave de Disfrute</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700 ugt-accent-bg p-4 rounded-lg ugt-border-red border-l-4">
+                           <li>Base de <span class="font-semibold ugt-text-red">6 días laborables</span> anuales.</li>
+                           <li>Días adicionales por antigüedad: se añaden <span class="font-semibold ugt-text-red">2 días</span> a partir del 6º trienio (18 años), y se suma <span class="font-semibold ugt-text-red">1 día adicional por cada trienio</span> cumplido a partir del 8º trienio (24 años y siguientes).</li>
+                           <li>Disfrute a lo largo del año y <span class="font-semibold ugt-text-red">hasta el 31 de enero</span> del año siguiente.</li>
+                           <li>Sujeto a las necesidades del servicio.</li>
+                           <li>Los <span class="font-semibold ugt-text-red">días de libre disposición por trienios</span> no descuentan horas del cómputo anual de jornada.</li>
+                        </ul>
+                    </div>
+                    <div>
+                         <h3 class="font-bold text-lg mb-4 text-center ugt-text-red">Composición de tus Días de Libre Disposición</h3>
+                         <div class="chart-container">
+                            <canvas id="ld-chart"></canvas>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 mt-6 text-center ugt-text-red">Códigos AIDA de Libre Disposición</h3>
+                        <div id="ld-codes-grid" class="grid grid-cols-2 gap-2 text-xs text-center">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN PERMISOS -->
+            <section id="tab-permisos" class="tab-content hidden bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold ugt-text-red mb-4">Guía de Permisos y Licencias</h2>
+                <p class="text-slate-600 mb-6">El catálogo de permisos es extenso. Utiliza los filtros por categoría o el buscador para encontrar rápidamente el permiso que te interesa. Cada tarjeta resume las condiciones clave y muestra el código AIDA correspondiente para que puedas identificarlo fácilmente en tu ficha de incidencias.</p>
+                
+                <div class="flex flex-col md:flex-row gap-4 mb-6">
+                    <div class="relative flex-grow">
+                         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+                        <input type="text" id="permit-search" placeholder="Buscar permiso (ej: paternidad, mudanza...)" class="w-full p-2 pl-10 border border-slate-300 rounded-lg focus:ring-2 focus:ring-ugt-text-red focus:border-ugt-text-red transition">
+                    </div>
+                    <div class="flex-shrink-0">
+                        <select id="permit-category-filter" class="w-full md:w-auto p-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-ugt-text-red focus:border-ugt-text-red transition">
+                            <option value="all">Todas las categorías</option>
+                            <option value="familiares">Familiares</option>
+                            <option value="personales">Personales</option>
+                            <option value="salud">Salud</option>
+                            <option value="formacion">Formación y Deberes</option>
+                            <option value="sindicales">Sindicales</option>
+                            <option value="compensatorios">Compensatorios</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="permit-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                </div>
+            </section>
+            
+            <!-- SECCIÓN CÓDIGOS AIDA -->
+            <section id="tab-codigos" class="tab-content hidden bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold ugt-text-red mb-4">Explorador de Códigos AIDA</h2>
+                 <p class="text-slate-600 mb-6">Esta sección funciona como un diccionario de todos los códigos de incidencias que utiliza la aplicación AIDA. Si ves un código en tu ficha y no sabes qué significa, puedes usar el buscador para encontrar su definición rápidamente.</p>
+                <div class="relative mb-6">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+                    <input type="text" id="aida-code-search" placeholder="Buscar por código o descripción..." class="w-full p-2 pl-10 border border-slate-300 rounded-lg focus:ring-2 focus:ring-ugt-text-red focus:border-ugt-text-red transition">
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-slate-600">
+                        <thead class="text-xs ugt-text-red uppercase ugt-accent-bg rounded-t-lg">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Código</th>
+                                <th scope="col" class="px-6 py-3">Descripción</th>
+                                <th scope="col" class="px-6 py-3">Categoría</th>
+                            </tr>
+                        </thead>
+                        <tbody id="aida-code-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECCIÓN RESUMEN GLOBAL -->
+            <section id="tab-resumen-global" class="tab-content hidden bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold ugt-text-red mb-4">Resumen Global de Días de Descanso Anuales</h2>
+                <p class="text-slate-600 mb-6">Aquí puedes ver el total de días de vacaciones y días de libre disposición que te corresponden anualmente, basado en los años de servicio que selecciones en las pestañas anteriores. Además, puedes introducir los días ya disfrutados o solicitados para calcular los días restantes.</p>
+                
+                <div class="ugt-accent-bg p-6 rounded-lg text-center ugt-border-red border-l-4 mb-6">
+                    <p class="text-slate-600 text-lg mb-4">Para <span id="summary-antiquity-years" class="font-bold ugt-text-red">10</span> años de servicio:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-white p-4 rounded-md shadow-sm">
+                            <p class="text-sm text-slate-500">Vacaciones Totales:</p>
+                            <p id="summary-vacation-days" class="text-3xl font-bold ugt-text-red">22</p>
+                            <p class="text-sm text-slate-500">días</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-md shadow-sm">
+                            <p class="text-sm text-slate-500">Libre Disposición Total:</p>
+                            <p id="summary-ld-days" class="text-3xl font-bold ugt-text-red">6</p>
+                            <p class="text-sm text-slate-500">días</p>
+                        </div>
+                        <div class="ugt-bg-red p-4 rounded-md shadow-md text-white">
+                            <p class="text-sm">Total Días de Descanso Restantes:</p>
+                            <p id="summary-total-days" class="text-4xl font-bold">28</p>
+                            <p class="text-sm">días</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-500">Este total incluye tus días de vacaciones base, los adicionales por antigüedad, y tus días de libre disposición base más los adicionales por trienios.</p>
+                </div>
+
+                <div class="ugt-accent-bg p-6 rounded-lg ugt-border-red border-l-4">
+                    <h3 class="font-bold text-lg mb-4 text-slate-800">Días Disfrutados / Restantes</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Vacaciones Section -->
+                        <div class="bg-white p-4 rounded-md shadow-sm">
+                            <h4 class="font-bold text-slate-800 mb-3">Vacaciones</h4>
+                            <label for="vacation-base-taken-input" class="block font-semibold text-slate-700 mb-2">Base ya disfrutadas/solicitadas:</label>
+                            <input type="number" id="vacation-base-taken-input" min="0" value="0" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-ugt-text-red focus:border-ugt-text-red transition">
+                            <div class="mt-3 text-center">
+                                <p class="text-slate-600">Restantes (Base):</p>
+                                <p id="vacation-base-remaining-days" class="text-2xl font-bold ugt-text-red">0 días</p>
+                            </div>
+
+                            <label for="vacation-antiquity-taken-input" class="block font-semibold text-slate-700 mt-4 mb-2">Antigüedad ya disfrutadas/solicitadas:</label>
+                            <input type="number" id="vacation-antiquity-taken-input" min="0" value="0" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-ugt-text-red focus:border-ugt-text-red transition">
+                            <div class="mt-3 text-center">
+                                <p class="text-slate-600">Restantes (Antigüedad):</p>
+                                <p id="vacation-antiquity-remaining-days" class="text-2xl font-bold ugt-text-red">0 días</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-200 text-center">
+                                <p class="text-slate-600">Total Vacaciones Restantes:</p>
+                                <p id="vacation-total-remaining-days" class="text-3xl font-bold ugt-text-red">0 días</p>
+                            </div>
+                        </div>
+
+                        <!-- Libre Disposición Section -->
+                        <div class="bg-white p-4 rounded-md shadow-sm">
+                            <h4 class="font-bold text-slate-800 mb-3">Libre Disposición</h4>
+                            <label for="ld-base-taken-input" class="block font-semibold text-slate-700 mb-2">Base ya disfrutadas/solicitadas:</label>
+                            <input type="number" id="ld-base-taken-input" min="0" value="0" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-ugt-text-red focus:border-ugt-text-red transition">
+                            <div class="mt-3 text-center">
+                                <p class="text-slate-600">Restantes (Base):</p>
+                                <p id="ld-base-remaining-days" class="text-2xl font-bold ugt-text-red">0 días</p>
+                            </div>
+
+                            <label for="ld-trienios-taken-input" class="block font-semibold text-slate-700 mt-4 mb-2">Trienios ya disfrutadas/solicitadas:</label>
+                            <input type="number" id="ld-trienios-taken-input" min="0" value="0" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-ugt-text-red focus:border-ugt-text-red transition">
+                            <div class="mt-3 text-center">
+                                <p class="text-slate-600">Restantes (Trienios):</p>
+                                <p id="ld-trienios-remaining-days" class="text-2xl font-bold ugt-text-red">0 días</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-200 text-center">
+                                <p class="text-slate-600">Total Libre Disposición Restantes:</p>
+                                <p id="ld-total-remaining-days" class="text-3xl font-bold ugt-text-red">0 días</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="text-center mt-12 text-slate-600 text-sm">
+            <p class="mb-2">Esta es una guía interpretativa no oficial.
+                Para información vinculante, consulta siempre a tu sindicato UGT, la normativa vigente y las fuentes oficiales de SACYL y la Junta de Castilla y León. Creado en 2025.</p>
+            <div class="font-semibold ugt-text-red">
+                <p>Sección sindical UGT</p>
+                <p>Edificio 1, Hospital Virgen Vega, semisótano</p>
+                <p>C/ P.° de San Vicente, 58, 182, 37007 Salamanca</p>
+                <p>e-mail: <a href="mailto:sanidad.salamanca@ugt-sp.upt.org" class="underline ugt-text-red">sanidad.salamanca@ugt-sp.upt.org</a></p>
+                <p>Tel. 923 29 1 00- Ext. 55598 y 55610</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Enlace a tu archivo JavaScript personalizado -->
+    <script src="script.js"></script>
+</body>
+</html>
