@@ -102,8 +102,8 @@ document.addEventListener('DOMContentLoaded', function () {
             { name: 'Compensación Sábados Festivos (Turno Mañana Fija L-V)', category: 'compensatorios', details: 'Un día adicional por cada sábado festivo en el año en curso para trabajadores con turno de mañanas fijas de lunes a viernes.', codes: ['D0H'] }
         ],
         aidaCodes: [
-            { code: "A", description: "ACCIDENTE LABORAL/NO LABORAL", category: "Ausencia", computo: 7 },
-            { code: "CON", description: "ASISTENCIA A CONGRESO", category: "Permiso", computo: 7 },
+            { code: "A", description: "ACCIDENTE LABORAL/NO LABORAL", category: "Ausencia", computo: "7" },
+            { code: "CON", description: "ASISTENCIA A CONGRESO", category: "Permiso", computo: "7" },
             { code: "D", description: "DESCANSO", category: "Jornada/Descanso", computo: 0 },
             { code: "DHU", description: "DIAS DE HUELGA", category: "Ausencia", computo: 0 },
             { code: "D0H", description: "DESCANSO FESTIVO EN SÁBADO", category: "Jornada/Descanso", computo: 0 },
