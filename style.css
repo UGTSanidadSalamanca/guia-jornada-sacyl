@@ -65,3 +65,25 @@ input[type="range"]::-moz-range-track {
 input[type="range"]::-ms-track {
     background-color: #fca5a5; /* Light red track */
 }
+
+/* Styles for the highlighted "Resumen Global" button */
+.highlight-nav-btn {
+    background-color: #E4002B; /* UGT Red */
+    color: white;
+    border-color: white; /* White border for emphasis */
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    width: 100%; /* Make it full width on small screens */
+}
+.highlight-nav-btn:hover {
+    background-color: #c20025; /* Darker red on hover */
+    border-color: white;
+    transform: translateY(-1px);
+}
+/* On medium screens and up, let it behave like other buttons in terms of width */
+@media (min-width: 768px) {
+    .highlight-nav-btn {
+        width: auto; /* Revert to auto width on larger screens */
+    }
+}
