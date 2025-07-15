@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (numberOfNights === 0) {
             adjustedAnnualHoursSpan.textContent = `${baseAnnualHoursDiurno} horas`;
-            nightShiftMessage.textContent = "Para turno diurno o sin noches, la jornada base es 1.519 horas.";
+            nightShiftMessage.textContent = "Para turno diurno o sin noches, la jornada base es 1.533 horas.";
         } else if (numberOfNights >= 1 && numberOfNights <= 142) {
             const foundData = nightHoursData.find(item => item.nights === numberOfNights);
             if (foundData) {
