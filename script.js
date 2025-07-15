@@ -435,7 +435,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span class="text-xs font-medium px-2 py-0.5 rounded-full ${
                         item.category === 'Turno' ? 'bg-blue-100 text-blue-800' :
                         item.category === 'Vacaciones' ? 'bg-green-100 text-green-800' :
-                        item.category === 'Permiso' || item.category === 'Compensación' ? 'ugt-bg-red text-white' : /* Highlight Permiso and Compensación */
+                        item.category === 'Permiso' ? 'ugt-bg-red text-white' :
+                        item.category === 'Compensación' ? 'ugt-bg-red text-white' : /* Highlight Permiso and Compensación */
                         'bg-slate-100 text-slate-800'
                     }">${item.category}</span>
                 </td>
