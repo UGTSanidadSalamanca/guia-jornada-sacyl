@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function calculateAnnualHours() {
         const numberOfNights = parseInt(nightShiftsInput.value);
         // Updated base annual hours for diurno/fixed morning shifts
-        const baseAnnualHoursDiurno = 1519; 
+        const baseAnnualHoursDiurno = 1533; 
 
         if (isNaN(numberOfNights) || numberOfNights < 0) {
             adjustedAnnualHoursSpan.textContent = `${baseAnnualHoursDiurno} horas`;
