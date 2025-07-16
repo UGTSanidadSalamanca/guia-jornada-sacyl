@@ -1,109 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Calculadora Interactiva de Días de Descanso Anuales</title>
-    <!-- Link to Tailwind CSS -->
+    <!-- Enlace a Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Link to Chart.js for charts -->
+    <!-- Enlace a Chart.js para gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Link to Google Fonts for Inter font -->
+    <!-- Enlace a Google Fonts para la fuente Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Embedded custom CSS styles -->
-    <style>
-        /* style.css */
-
-        body { font-family: 'Inter', sans-serif; }
-        .active-tab {
-            background-color: #E4002B; /* UGT Red */
-            color: white;
-            border-color: #E4002B;
-        }
-        .inactive-tab {
-            background-color: #f0f4f8; /* Lighter slate for inactive */
-            color: #334155;
-            border-color: #cbd5e1; /* Slate border */
-        }
-        .nav-btn:hover:not(.active-tab) {
-            background-color: #fecaca; /* Light red on hover for inactive */
-            color: #E4002B;
-            border-color: #E4002B;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 350px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
-        /* UGT Red */
-        .ugt-bg-red {
-            background-color: #E4002B; /* A common UGT red */
-        }
-        .ugt-text-red {
-            color: #E4002B;
-        }
-        .ugt-border-red {
-            border-color: #E4002B;
-        }
-        .ugt-accent-bg {
-            background-color: #fef2f2; /* Very light red for accents */
-        }
-        .ugt-accent-border {
-            border-color: #fca5a5; /* Light red border */
-        }
-        /* Custom style for range input thumb and track color */
-        input[type="range"]::-webkit-slider-thumb {
-            background-color: #E4002B; /* UGT Red */
-        }
-        input[type="range"]::-moz-range-thumb {
-            background-color: #E4002B; /* UGT Red */
-        }
-        input[type="range"]::-ms-thumb {
-            background-color: #E4002B; /* UGT Red */
-        }
-        input[type="range"]::-webkit-slider-runnable-track {
-            background-color: #fca5a5; /* Light red track */
-        }
-        input[type="range"]::-moz-range-track {
-            background-color: #fca5a5; /* Light red track */
-        }
-        input[type="range"]::-ms-track {
-            background-color: #fca5a5; /* Light red track */
-        }
-
-        /* Styles for the highlighted "Resumen Global" button */
-        .highlight-nav-btn {
-            background-color: #E4002B; /* UGT Red */
-            color: white;
-            border-color: white; /* White border for emphasis */
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-            width: 100%; /* Make it full width on small screens */
-        }
-        .highlight-nav-btn:hover {
-            background-color: #c20025; /* Darker red on hover */
-            border-color: white;
-            transform: translateY(-1px);
-        }
-        /* On medium screens and up, let it behave like other buttons in terms of width */
-        @media (min-width: 768px) {
-            .highlight-nav-btn {
-                width: auto; /* Revert to auto width on larger screens */
-            }
-        }
-    </style>
+    <!-- Enlace a tu archivo de estilos CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-50 text-slate-800">
 
@@ -119,19 +30,18 @@
         </header>
 
         <nav class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
-            <!-- Moved Resumen Global to the first position and applied highlight class -->
-            <button id="btn-resumen-global" class="nav-btn active-tab highlight-nav-btn text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="resumen-global">✨ Resumen Global</button>
-            <button id="btn-jornada" class="nav-btn inactive-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="jornada">🕰️ Jornada</button>
+            <button id="btn-jornada" class="nav-btn active-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="jornada">🕰️ Jornada</button>
             <button id="btn-vacaciones" class="nav-btn inactive-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="vacaciones">✈️ Vacaciones</button>
             <button id="btn-libre-disposicion" class="nav-btn inactive-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="libre-disposicion">🗓️ Días Libre Disposición</button>
             <button id="btn-permisos" class="nav-btn inactive-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="permisos">📋 Permisos</button>
             <button id="btn-codigos" class="nav-btn inactive-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="codigos">🔍 Códigos AIDA</button>
+            <button id="btn-resumen-global" class="nav-btn inactive-tab text-sm md:text-base font-semibold py-2 px-4 rounded-lg border transition-colors duration-300 shadow-sm" data-tab="resumen-global">✨ Resumen Global</button>
         </nav>
 
         <main id="main-content">
 
             <!-- SECCIÓN JORNADA -->
-            <section id="tab-jornada" class="tab-content hidden bg-white p-6 rounded-xl shadow-lg">
+            <section id="tab-jornada" class="tab-content bg-white p-6 rounded-xl shadow-lg">
                 <h2 class="text-2xl font-bold ugt-text-red mb-4">Tu Jornada Laboral</h2>
                 <p class="text-slate-600 mb-6">Esta sección resume los aspectos clave de tu jornada de trabajo en SACYL, desde el cómputo de horas anual hasta la gestión de turnos. El objetivo es que conozcas las reglas fundamentales que estructuran tu día a día laboral y cómo el sistema AIDA las registra.</p>
                 
@@ -139,15 +49,18 @@
                     <div class="ugt-accent-bg p-4 rounded-lg ugt-border-red border-l-4">
                         <h3 class="font-bold text-lg mb-2 text-slate-800">Jornada Ordinaria Anual (Diurna)</h3>
                         <p class="text-4xl font-bold ugt-text-red">1.533 <span class="text-2xl font-semibold text-slate-500">horas</span></p>
-                        <p class="text-slate-500 mt-1">Para el personal con turno de mañanas fijas, la jornada anual se calcula de la siguiente manera:</p>
-                        <p class="text-slate-500 mt-1">Se parte de los <span class="font-semibold ugt-text-red">365</span> días del año, a los que se restan <span class="font-semibold ugt-text-red">104</span> días (sábados y domingos), <span class="font-semibold ugt-text-red">14</span> festivos, <span class="font-semibold ugt-text-red">22</span> días de vacaciones y <span class="font-semibold ugt-text-red">6</span> días de libre disposición, resultando en <span class="font-semibold ugt-text-red">219</span> días de trabajo efectivo.</p>
-                        <p class="text-slate-500 mt-1">Este resultado se multiplica por <span class="font-semibold ugt-text-red">7</span> horas por jornada, determinando así la jornada anual para <span class="font-semibold ugt-text-red">2025.</span></p>
+                        <p class="text-slate-500 mt-1">(Para personal con turno de mañanas fijas o Atención Primaria.)</p>
+                        <p class="text-slate-500 mt-1">Es el reusltado anual de: <span class="font-semibold ugt-text-red">365</span>(dias)<span class="font-semibold ugt-text-red">-104</span>(sábados+domingos)</p>
+                        <p class="text-slate-500 mt-1"><span class="font-semibold ugt-text-red">-14</span>(festivos)<span class="font-semibold ugt-text-red">-22</span>(dias vacaciones)<span class="font-semibold ugt-text-red">-6</span>(libre disp.)= <span class="font-semibold ugt-text-red">219</span>(dias).</p>
+                        <p class="text-slate-500 mt-1">Este resultado multiplicado por <span class="font-semibold ugt-text-red">7</span>(horas/jornada)<span class="font-semibold ugt-text-red">+14</span> horas a compensar por <span class="font-semibold ugt-text-red">24 y 31 de diciembre</span>, si procede, determina la jornada anual para <span class="font-semibold ugt-text-red">2025.</span></p>
+                         
                     </div>
                     <div class="ugt-accent-bg p-4 rounded-lg ugt-border-red border-l-4">
                         <h3 class="font-bold text-lg mb-2 text-slate-800">Reglas Clave</h3>
                         <ul class="list-disc list-inside space-y-2 text-slate-700">
                             <li>El <span class="font-semibold ugt-text-red">exceso de horas</span> se compensa con descanso, no económicamente.</li>
-                            <li>Los <span class="font-semibold ugt-text-red">permisos</span> deben solicitarse a través del aplicativo AIDA.</li>
+                            <li>Los <span class="font-semibold ugt-text-red">cambios de turno</span> deben solicitarse con 1 semana de antelación.</li>
+                            <li>Las <span class="font-semibold ugt-text-red">guardias localizadas y mixtas</span> no tienen ponderación en el cómputo de horas.</li>
                             <li>A los trabajadores con contrato en vigor que comprenda los días 24 y 31 de diciembre les corresponden <span class="font-semibold ugt-text-red">7 horas</span> por cada uno de estos días.</li>
                             <li>A los trabajadores con turno de mañanas fijas de lunes a viernes se les añade <span class="font-semibold ugt-text-red">un día</span> por cada sábado festivo en el año en curso.</li>
                         </ul>
@@ -183,7 +96,7 @@
                         <h3 class="font-bold text-lg mb-4 text-slate-800">Calculadora de Días por Antigüedad</h3>
                         <div class="ugt-accent-bg p-4 rounded-lg ugt-border-red border-l-4">
                             <label for="antiquity-slider" class="block font-semibold text-slate-700 mb-2">Años de servicio en SACYL:</label>
-                            <input type="range" id="antiquity-slider" min="0" max="50" value="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-ugt-red">
+                            <input type="range" id="antiquity-slider" min="0" max="39" value="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-ugt-red">
                             <div id="vacation-slider-labels" class="flex justify-between text-xs text-slate-500 mt-1">
                                 <!-- Labels will be dynamically inserted here by JavaScript -->
                             </div>
@@ -224,7 +137,7 @@
                         <h3 class="font-bold text-lg mb-4 text-slate-800">Calculadora de Días por Antigüedad</h3>
                         <div class="ugt-accent-bg p-4 rounded-lg ugt-border-red border-l-4">
                             <label for="antiquity-slider-ld" class="block font-semibold text-slate-700 mb-2">Años de servicio en SACYL:</label>
-                            <input type="range" id="antiquity-slider-ld" min="0" max="50" value="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-ugt-red">
+                            <input type="range" id="antiquity-slider-ld" min="0" max="39" value="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-ugt-red">
                             <div id="ld-slider-labels" class="flex justify-between text-xs text-slate-500 mt-1">
                                 <!-- Labels will be dynamically inserted here by JavaScript -->
                             </div>
@@ -297,7 +210,7 @@
                                 <th scope="col" class="px-6 py-3">Código</th>
                                 <th scope="col" class="px-6 py-3">Descripción</th>
                                 <th scope="col" class="px-6 py-3">Categoría</th>
-                                <th scope="col" class="px-6 py-3">Compensación</th>
+                                <th scope="col" class="px-6 py-3">Cómputo</th>
                             </tr>
                         </thead>
                         <tbody id="aida-code-table-body">
@@ -307,19 +220,10 @@
             </section>
 
             <!-- SECCIÓN RESUMEN GLOBAL -->
-            <section id="tab-resumen-global" class="tab-content bg-white p-6 rounded-xl shadow-lg">
+            <section id="tab-resumen-global" class="tab-content hidden bg-white p-6 rounded-xl shadow-lg">
                 <h2 class="text-2xl font-bold ugt-text-red mb-4">Resumen Global de Días de Descanso Anuales</h2>
                 <p class="text-slate-600 mb-6">Aquí puedes ver el total de días de vacaciones y días de libre disposición que te corresponden anualmente, basado en los años de servicio que selecciones en las pestañas anteriores. Además, puedes introducir los días ya disfrutados o solicitados para calcular los días restantes.</p>
                 
-                <div class="ugt-accent-bg p-4 rounded-lg ugt-border-red border-l-4 mb-6">
-                    <h3 class="font-bold text-lg mb-4 text-slate-800">Selecciona tus Años de Servicio</h3>
-                    <label for="summary-antiquity-slider" class="block font-semibold text-slate-700 mb-2">Años de servicio en SACYL:</label>
-                    <input type="range" id="summary-antiquity-slider" min="0" max="50" value="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-ugt-red">
-                    <div id="summary-slider-labels" class="flex justify-between text-xs text-slate-500 mt-1">
-                        <!-- Labels will be dynamically inserted here by JavaScript -->
-                    </div>
-                </div>
-
                 <div class="ugt-accent-bg p-6 rounded-lg text-center ugt-border-red border-l-4 mb-6">
                     <p class="text-slate-600 text-lg mb-4">Para <span id="summary-antiquity-years" class="font-bold ugt-text-red">10</span> años de servicio:</p>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -407,7 +311,12 @@
         </footer>
 
     </div>
+
+    <!-- Enlace a tu archivo JavaScript personalizado -->
+    <script src="script.js"></script>
 </body>
+</html>
+
 </html>
 
 </body>
