@@ -151,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const summaryVacationDaysSpan = document.getElementById('summary-vacation-days'); // Total entitlement for vacations
     const summaryLdDaysSpan = document.getElementById('summary-ld-days'); // Total entitlement for LD
     const summaryTotalDaysSpan = document.getElementById('summary-total-days'); // This will now show the total REMAINING days
-    const summaryAntiquitySlider = document.getElementById('summary-antiquity-slider'); // New slider for summary
 
     // Elements for days taken/remaining
     const vacationBaseTakenInput = document.getElementById('vacation-base-taken-input');
@@ -172,22 +171,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const tabId = button.dataset.tab;
 
             navButtons.forEach(btn => {
-                btn.classList.remove('active-tab', 'highlight-nav-btn'); // Remove highlight from all
+                btn.classList.remove('active-tab');
                 btn.classList.add('inactive-tab');
-                // Ensure existing highlight class is removed from others
-                if (btn.id === 'btn-resumen-global') {
-                    btn.classList.remove('highlight-nav-btn');
-                    btn.classList.add('inactive-tab'); // Revert to inactive if not selected
-                }
             });
             button.classList.add('active-tab');
             button.classList.remove('inactive-tab');
-
-            // Re-add highlight specifically for the Resumen Global button if it's clicked
-            if (tabId === 'resumen-global') {
-                button.classList.add('highlight-nav-btn');
-            }
-
 
             tabContents.forEach(content => {
                 if (content.id === `tab-${tabId}`) {
@@ -218,23 +206,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function populateVacationCodesGrid() {
-        const grid = document.getElementById('vacation-codes-grid');
-        grid.innerHTML = data.vacationCodes.map(vc => `
+         const grid = document.getElementById('vacation-codes-grid');
+         grid.innerHTML = data.vacationCodes.map(vc => `
             <div class="bg-red-100 p-2 rounded border border-red-200">
                 <p class="font-semibold text-red-800">${vc.name}</p>
                 <p class="font-mono ugt-text-red bg-white inline-block px-1.5 rounded">${vc.code}</p>
             </div>
-        `).join('');
+         `).join('');
     }
 
     function populateLDCodesGrid() {
-        const grid = document.getElementById('ld-codes-grid');
-        grid.innerHTML = data.ldCodes.map(ldc => `
+         const grid = document.getElementById('ld-codes-grid');
+         grid.innerHTML = data.ldCodes.map(ldc => `
             <div class="bg-red-100 p-2 rounded border border-red-200">
                 <p class="font-semibold text-red-800">${ldc.name}</p>
                 <p class="font-mono ugt-text-red bg-white inline-block px-1.5 rounded">${ldc.code}</p>
             </div>
-        `).join('');
+         `).join('');
     }
     
     const antiquitySlider = document.getElementById('antiquity-slider');
@@ -293,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         grid: { display: false },
                         suggestedMax: 30
                     },
-                    y: {
+                     y: {
                         grid: { display: false }
                     }
                 },
@@ -329,6 +317,10 @@ document.addEventListener('DOMContentLoaded', function () {
             bonusDays += 2;
         }
         // For each trienio starting from the 8th trienio (24 years), add 1 additional day.
+        // (trienios - 7) correctly calculates this:
+        // If 8 trienios (24 years): 8 - 7 = 1 day added
+        // If 9 trienios (27 years): 9 - 7 = 2 days added
+        // If 10 trienios (30 years): 10 - 7 = 3 days added, etc.
         if (trienios >= 8) { 
             bonusDays += (trienios - 7); 
         }
@@ -375,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         grid: { display: false },
                         suggestedMax: 15
                     },
-                    y: {
+                     y: {
                         grid: { display: false }
                     }
                 },
@@ -448,22 +440,21 @@ document.addEventListener('DOMContentLoaded', function () {
                         'bg-slate-100 text-slate-800'
                     }">${item.category}</span>
                 </td>
-                <td class="px-6 py-4">${item.computo} horas</td> <!-- Added "horas" -->
             </tr>
         `).join('');
     }
 
     function updateSummary() {
-        const years = parseInt(summaryAntiquitySlider.value); // Use the new summary slider value
+        const years = parseInt(antiquitySlider.value); // Use the main antiquity slider value
         summaryAntiquityYearsSpan.textContent = years;
 
-        // Recalculate vacation days based on the summary slider
+        // Recalculate vacation days
         const vacBonusEntitlement = getVacationBonusDays(years);
         const totalVacBaseEntitlement = 22;
         const totalVacEntitlement = totalVacBaseEntitlement + vacBonusEntitlement;
         summaryVacationDaysSpan.textContent = totalVacEntitlement; // Display total entitlement for vacations
 
-        // Recalculate personal days based on the summary slider
+        // Recalculate personal days
         const ldData = getPersonalDays(years);
         const totalLdBaseEntitlement = ldData.base;
         const ldTrieniosEntitlement = ldData.bonus;
@@ -481,24 +472,24 @@ document.addEventListener('DOMContentLoaded', function () {
         const ldBaseRemaining = Math.max(0, totalLdBaseEntitlement - ldBaseTaken);
         const ldTrieniosRemaining = Math.max(0, ldTrieniosEntitlement - ldTrieniosTaken);
 
-        // Debugging logs - useful for development, can be removed in production
-        // console.log('--- updateSummary Debug ---');
-        // console.log('Years:', years);
-        // console.log('Vacation Base Entitlement:', totalVacBaseEntitlement);
-        // console.log('Vacation Bonus Entitlement:', vacBonusEntitlement);
-        // console.log('LD Base Entitlement:', totalLdBaseEntitlement);
-        // console.log('LD Trienios Entitlement:', ldTrieniosEntitlement);
-        // console.log('Vacation Base Taken:', vacBaseTaken);
-        // console.log('Vacation Antiquity Taken:', vacAntiquityTaken);
-        // console.log('LD Base Taken:', ldBaseTaken);
-        // console.log('LD Trienios Taken:', ldTrieniosTaken);
-        // console.log('Vacation Base Remaining:', vacBaseRemaining);
-        // console.log('Vacation Antiquity Remaining:', vacAntiquityRemaining);
-        // console.log('LD Base Remaining:', ldBaseRemaining);
-        // console.log('LD Trienios Remaining:', ldTrieniosRemaining);
+        // Debugging logs
+        console.log('--- updateSummary Debug ---');
+        console.log('Years:', years);
+        console.log('Vacation Base Entitlement:', totalVacBaseEntitlement);
+        console.log('Vacation Bonus Entitlement:', vacBonusEntitlement);
+        console.log('LD Base Entitlement:', totalLdBaseEntitlement);
+        console.log('LD Trienios Entitlement:', ldTrieniosEntitlement);
+        console.log('Vacation Base Taken:', vacBaseTaken);
+        console.log('Vacation Antiquity Taken:', vacAntiquityTaken);
+        console.log('LD Base Taken:', ldBaseTaken);
+        console.log('LD Trienios Taken:', ldTrieniosTaken);
+        console.log('Vacation Base Remaining:', vacBaseRemaining);
+        console.log('Vacation Antiquity Remaining:', vacAntiquityRemaining);
+        console.log('LD Base Remaining:', ldBaseRemaining);
+        console.log('LD Trienios Remaining:', ldTrieniosRemaining);
         const finalTotalRemaining = vacBaseRemaining + vacAntiquityRemaining + ldBaseRemaining + ldTrieniosRemaining;
-        // console.log('Total Remaining (calculated):', finalTotalRemaining);
-        // console.log('---------------------------');
+        console.log('Total Remaining (calculated):', finalTotalRemaining);
+        console.log('---------------------------');
 
         // Update UI for remaining days using textContent
         if (vacationBaseRemainingDaysSpan) {
@@ -585,29 +576,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     antiquitySlider.addEventListener('input', () => {
-        const value = antiquitySlider.value;
-        antiquitySliderLd.value = value; // Sync sliders
-        summaryAntiquitySlider.value = value; // Sync with new summary slider
+        antiquitySliderLd.value = antiquitySlider.value; // Sync sliders
         updateVacationInfo();
         updateLdInfo();
     });
     antiquitySliderLd.addEventListener('input', () => {
-        const value = antiquitySliderLd.value;
-        antiquitySlider.value = value; // Sync sliders
-        summaryAntiquitySlider.value = value; // Sync with new summary slider
+        antiquitySlider.value = antiquitySliderLd.value; // Sync sliders
         updateLdInfo();
         updateVacationInfo();
     });
-    // New event listener for the summary antiquity slider
-    summaryAntiquitySlider.addEventListener('input', () => {
-        const value = summaryAntiquitySlider.value;
-        antiquitySlider.value = value; // Sync with other sliders
-        antiquitySliderLd.value = value; // Sync with other sliders
-        updateVacationInfo(); // Recalculate vacation info based on new value
-        updateLdInfo(); // Recalculate LD info based on new value
-        updateSummary(); // Update the summary section
-    });
-
 
     nightShiftsInput.addEventListener('input', calculateAnnualHours); // New event listener
 
@@ -629,9 +606,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initLdChart();
     
     // Populate dynamic slider labels
-    createDynamicSliderLabels('vacation-slider-labels', 0, 50, 5); // Labels for 0, 5, 10, ..., 45, 50
-    createDynamicSliderLabels('ld-slider-labels', 0, 50, 5); // Labels for 0, 5, 10, ..., 45, 50
-    createDynamicSliderLabels('summary-slider-labels', 0, 50, 5); // Labels for the new summary slider
+    createDynamicSliderLabels('vacation-slider-labels', 0, 39, 5); // Labels for 0, 5, 10, ..., 35, 39
+    createDynamicSliderLabels('ld-slider-labels', 0, 39, 5); // Labels for 0, 5, 10, ..., 35, 39
 
     updateVacationInfo(); // Initial update for vacation and summary
     updateLdInfo(); // Initial update for LD and summary
