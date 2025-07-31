@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
             { code: 'LTA', name: 'LD Trienios Año Anterior' },
         ],
         permits: [
-            { name: 'Permiso por Maternidad', category: 'familiares', details: '16 semanas ininterrumpidas, ampliables.', codes: ['MAT'] },
-            { name: 'Permiso por Paternidad', category: 'familiares', details: '16 semanas (6 obligatorias post-parto).', codes: ['PAR'] },
+            { name: 'Permiso por Maternidad', category: 'familiares', details: '19 semanas (6 semanas obligatorio tras parto, 11 semanas flexibles hasta los 12 meses de menor y 2 semanas más hasta que el menor cumpla 8 años).', codes: ['MAT'] },
+            { name: 'Permiso por Paternidad', category: 'familiares', details: '19 semanas (6 semanas obligatorio tras parto, 11 semanas flexibles hasta los 12 meses de menor y 2 semanas más hasta que el menor cumpla 8 años).', codes: ['PAR'] },
             { name: 'Permiso por Lactancia', category: 'familiares', details: '1h/día o acumulación en 5 semanas.', codes: ['DLA'] },
             { name: 'Cuidado de familiar (Enf. muy grave)', category: 'familiares', details: 'Reducción hasta 50% de jornada (máx. 1 mes).', codes: [] },
             { name: 'Cuidado de hijo (Enf. grave)', category: 'familiares', details: 'Reducción de al menos 50% de jornada.', codes: [] },
