@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
         permits: [
             { name: 'Permiso por Maternidad', category: 'familiares', details: '19 semanas (6 semanas obligatorio tras parto, 11 semanas flexibles hasta los 12 meses de menor y 2 semanas más hasta que el menor cumpla 8 años).', codes: ['MAT'] },
             { name: 'Permiso por Paternidad', category: 'familiares', details: '19 semanas (6 semanas obligatorio tras parto, 11 semanas flexibles hasta los 12 meses de menor y 2 semanas más hasta que el menor cumpla 8 años).', codes: ['PAR'] },
-            { name: 'Permiso por Lactancia', category: 'familiares', details: '1h/día o acumulación en 5 semanas.', codes: ['DLA'] },
+            { name: 'Permiso por Lactancia', category: 'familiares', details: '1 hora diaria o 2 fracciones de 1/2 hora, hasta los 12 meses del menor. O bien de forma acumulada: 6 semanas para la madre biológica y 5 semanas  para el otro progenitor.', codes: ['DLA'] },
             { name: 'Cuidado de familiar (Enf. muy grave)', category: 'familiares', details: 'Reducción hasta 50% de jornada (máx. 1 mes).', codes: [] },
             { name: 'Cuidado de hijo (Enf. grave)', category: 'familiares', details: 'Reducción de al menos 50% de jornada.', codes: [] },
             { name: 'Permiso por Causa de Fuerza Mayor', category: 'familiares', details: '4 días (28 horas)/año, no consecutivos.', codes: [] },
