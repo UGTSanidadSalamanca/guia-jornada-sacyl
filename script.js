@@ -407,11 +407,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         
         permitList.innerHTML = filteredPermits.map(permit => {
-            let linkHtml = 'https://ugtsanidadsalamanca.github.io/Permisos_Parentales';
+            let linkHtml = '';
             if (permit.name === 'Permiso por Maternidad' || permit.name === 'Permiso por Paternidad') {
                 linkHtml = `
                     <div class="mt-3 pt-3 border-t border-slate-200 text-center">
-                        <a href="https://ejemplo.com" class="text-sm font-semibold ugt-text-red hover:underline">Calcula aquí tu permiso</a>
+                        <a href="https://ugtsanidadsalamanca.github.io/Permisos_Parentales" class="text-sm font-semibold ugt-text-red hover:underline">Calcula aquí tu permiso</a>
                     </div>
                 `;
             }
