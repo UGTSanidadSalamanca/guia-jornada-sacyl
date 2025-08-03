@@ -407,25 +407,31 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         
         permitList.innerHTML = filteredPermits.map(permit => {
-            let linkHtml = '';
-            if (permit.name === 'Permiso por Maternidad' || permit.name === 'Permiso por Paternidad') {
-                linkHtml = `
-                    <div class="mt-3 pt-3 border-t border-slate-200 text-center">
-                        <a href="https://ugtsanidadsalamanca.github.io/Permisos_Parentales" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold ugt-text-red hover:underline">Calcula aquí tu permiso</a>
-                    </div>
-                `;
-            }
-            return `
-                <div class="border soft-accent-border soft-accent-bg p-4 rounded-lg flex flex-col">
-                    <h4 class="font-bold soft-text-dark">${permit.name}</h4>
-                    <p class="text-sm text-slate-700 flex-grow mt-1">${permit.details}</p>
-                    ${linkHtml}
-                    <div class="mt-3">
-                        ${permit.codes.map(code => `<span class="text-xs font-mono soft-text-dark soft-accent-bg px-2 py-1 rounded-full mr-1 border soft-border-medium">${code}</span>`).join('')}
-                    </div>
+    let permitCardHtml = `
+        <div class="border soft-accent-border soft-accent-bg p-4 rounded-lg flex flex-col cursor-pointer">
+            <h4 class="font-bold soft-text-dark">${permit.name}</h4>
+            <p class="text-sm text-slate-700 flex-grow mt-1">${permit.details}</p>
+            <div class="mt-3">
+                ${permit.codes.map(code => `<span class="text-xs font-mono soft-text-dark soft-accent-bg px-2 py-1 rounded-full mr-1 border soft-border-medium">${code}</span>`).join('')}
+            </div>
+            ${(permit.name === 'Permiso por Maternidad' || permit.name === 'Permiso por Paternidad') ? `
+                <div class="mt-4 pt-4 border-t border-slate-200 text-center">
+                    <span class="text-sm font-semibold ugt-text-red">Calcula Aquí Tu Permiso</span>
                 </div>
-            `;
-        }).join('');
+            ` : ''}
+        </div>
+    `;
+
+    if (permit.name === 'Permiso por Maternidad' || permit.name === 'Permiso por Paternidad') {
+        return `
+            <a href="https://ugtsanidadsalamanca.github.io/Permisos_Parentales" target="_blank" rel="noopener noreferrer" class="block transition-all hover:shadow-lg">
+                ${permitCardHtml}
+            </a>
+        `;
+    } else {
+        return permitCardHtml;
+    }
+}).join('');
     }
     
     const aidaCodeTableBody = document.getElementById('aida-code-table-body');
