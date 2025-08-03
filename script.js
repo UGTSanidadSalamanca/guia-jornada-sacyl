@@ -406,15 +406,26 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         
-        permitList.innerHTML = filteredPermits.map(permit => `
-            <div class="border soft-accent-border soft-accent-bg p-4 rounded-lg flex flex-col">
-                <h4 class="font-bold soft-text-dark">${permit.name}</h4>
-                <p class="text-sm text-slate-700 flex-grow mt-1">${permit.details}</p>
-                <div class="mt-3">
-                    ${permit.codes.map(code => `<span class="text-xs font-mono soft-text-dark soft-accent-bg px-2 py-1 rounded-full mr-1 border soft-border-medium">${code}</span>`).join('')}
+        permitList.innerHTML = filteredPermits.map(permit => {
+            let linkHtml = 'https://ugtsanidadsalamanca.github.io/Permisos_Parentales';
+            if (permit.name === 'Permiso por Maternidad' || permit.name === 'Permiso por Paternidad') {
+                linkHtml = `
+                    <div class="mt-3 pt-3 border-t border-slate-200 text-center">
+                        <a href="https://ejemplo.com" class="text-sm font-semibold ugt-text-red hover:underline">Calcula aquí tu permiso</a>
+                    </div>
+                `;
+            }
+            return `
+                <div class="border soft-accent-border soft-accent-bg p-4 rounded-lg flex flex-col">
+                    <h4 class="font-bold soft-text-dark">${permit.name}</h4>
+                    <p class="text-sm text-slate-700 flex-grow mt-1">${permit.details}</p>
+                    ${linkHtml}
+                    <div class="mt-3">
+                        ${permit.codes.map(code => `<span class="text-xs font-mono soft-text-dark soft-accent-bg px-2 py-1 rounded-full mr-1 border soft-border-medium">${code}</span>`).join('')}
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
     }
     
     const aidaCodeTableBody = document.getElementById('aida-code-table-body');
