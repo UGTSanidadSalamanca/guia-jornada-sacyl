@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
             
     const nightHoursData = [
@@ -51,21 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
         { nights: 139, hours: 1425 }, { nights: 140, hours: 1421 }, { nights: 141, hours: 1424 },
         { nights: 142, hours: 1420 }
     ];
-    
-    const guardiasHoursData = [
-        { guardias: 1, hours: 1529 }, { guardias: 2, hours: 1526 }, { guardias: 3, hours: 1523 },
-        { guardias: 4, hours: 1520 }, { guardias: 5, hours: 1516 }, { guardias: 6, hours: 1513 },
-        { guardias: 7, hours: 1510 }, { guardias: 8, hours: 1507 }, { guardias: 9, hours: 1503 },
-        { guardias: 10, hours: 1500 }, { guardias: 11, hours: 1497 }, { guardias: 12, hours: 1494 },
-        { guardias: 13, hours: 1491 }, { guardias: 14, hours: 1487 }, { guardias: 15, hours: 1484 },
-        { guardias: 16, hours: 1481 }, { guardias: 17, hours: 1478 }, { guardias: 18, hours: 1474 },
-        { guardias: 19, hours: 1471 }, { guardias: 20, hours: 1468 }, { guardias: 21, hours: 1465 },
-        { guardias: 22, hours: 1461 }, { guardias: 23, hours: 1458 }, { guardias: 24, hours: 1455 },
-        { guardias: 25, hours: 1452 }, { guardias: 26, hours: 1449 }, { guardias: 27, hours: 1445 },
-        { guardias: 28, hours: 1442 }, { guardias: 29, hours: 1439 }, { guardias: 30, hours: 1436 },
-        { guardias: 31, hours: 1432 }, { guardias: 32, hours: 1429 }, { guardias: 33, hours: 1426 },
-        { guardias: 34, hours: 1423 }, { guardias: 35, hours: 1420 }
-    ];
 
     const data = {
         shifts: [
@@ -116,45 +100,44 @@ document.addEventListener('DOMContentLoaded', function () {
             { name: 'Compensación Sábados Festivos (Turno Mañana Fija L-V)', category: 'compensatorios', details: 'Un día adicional por cada sábado festivo en el año en curso para trabajadores con turno de mañanas fijas de lunes a viernes.', codes: ['D0H'] }
         ],
         aidaCodes: [
-            { code: "A", description: "ACCIDENTE LABORAL/NO LABORAL", category: "Ausencia", value: "+7h / día" },
-            { code: "C", description: "COMPENSACIÓN POR SOLAPE", category: "Compensación", value: "+1-7 días" },
-            { code: "CON", description: "ASISTENCIA A CONGRESO/EXAMEN", category: "Permiso", value: "Variable" },
-            { code: "D", description: "DESCANSO", category: "Jornada/Descanso", value: "0h" },
-            { code: "D0H", description: "DESCANSO FESTIVO EN SÁBADO", category: "Compensación", value: "+7h" },
-            { code: "DHU", description: "DIAS DE HUELGA", category: "Ausencia", value: "-7h" },
-            { code: "DLA", description: "DIAS LACTANCIA MATERNA", category: "Permiso", value: "+1h / día" },
-            { code: "DPI", description: "DEBER PÚBLICO INEXCUSABLE", category: "Permiso", value: "Variable" },
-            { code: "ENF", description: "ENFERMEDAD COMÚN/PROFESIONAL", category: "Ausencia", value: "+7h / día" },
-            { code: "ESB", description: "ENFERMEDAD SIN BAJA", category: "Ausencia", value: "+7h / día" },
-            { code: "ESN", description: "ENFERMEDAD SIN BAJA (REP. NÓMINA)", category: "Ausencia", value: "+7h / día" },
-            { code: "FEF", description: "COMPENSACIÓN FESTIVO 24/31 DICIEMBRE", category: "Compensación", value: "+7h" },
-            { code: "FFA", description: "PERMISO FALLECIMIENTO", category: "Permiso", value: "+7h / día" },
-            { code: "G09", description: "GUARDIAS 9 HORAS", category: "Turno", value: "N/A" },
-            { code: "GRF", description: "GUARDIA 24 HORAS FORMACIÓN", category: "Turno", value: "N/A" },
-            { code: "LDN", description: "LIBRE DISPOSICIÓN AÑO ANTERIOR", category: "Permiso", value: "+7h" },
-            { code: "LIB", description: "LIBRE DISPOSICIÓN", category: "Permiso", value: "+7h" },
-            { code: "LTA", description: "LIBRE DISPOSICIÓN TRIENIOS AÑO ANTERIOR", category: "Permiso", value: "0h (no descuenta)" },
-            { code: "LDT", description: "LIBRE DISPOSICIÓN TRIENIOS", category: "Permiso", value: "0h (no descuenta)" },
-            { code: "LIS", description: "LIBERADO SINDICAL", category: "Permiso", value: "+7h / día" },
-            { code: "MAN", description: "MAÑANAS 7 HORAS", category: "Turno", value: "+7h" },
-            { code: "MAA", description: "MAÑANAS 7,30 HORAS", category: "Turno", value: "+7,30h" },
-            { code: "MGF", description: "GUARDIA FISICA 24 HORAS", category: "Turno", value: "N/A" },
-            { code: "MGH", description: "MAÑANA+GUARDIA FÍSICA 17 HORAS", category: "Turno", value: "N/A" },
-            { code: "MGL", description: "MAÑANA+GUARDIA LOCALIZADA 17 HORAS", category: "Turno", value: "N/A" },
-            { code: "MLG", description: "GUARDIA 24 HORAS LOCALIZADA", category: "Turno", value: "N/A" },
-            { code: "MAT", description: "PERMISO MATERNIDAD", category: "Permiso", value: "+7h / día" },
-            { code: "MRG", description: "MAÑANA+GUARDIA FORMACIÓN 17 HORAS", category: "Turno", value: "N/A" },
-            { code: "N", description: "NOCHE DE 10 HORAS", category: "Turno", value: "+10h+ponderación" },
-            { code: "PAR", description: "PERMISO PATERNIDAD", category: "Permiso", value: "+7h / día" },
-            { code: "PCM", description: "PERMISO CONSULTA MÉDICA", category: "Permiso", value: "Variable" },
-            { code: "PSC", description: "PERMISO SINDICAL COMPLETO", category: "Permiso", value: "+7h / día" },
-            { code: "PSI", description: "PERMISO SINDICAL PARCIAL", category: "Permiso", value: "Variable" },
-            { code: "T", description: "TARDE DE 7 HORAS", category: "Turno", value: "+7h" },
-            { code: "TAA", description: "TARDE DE 7,30 HORAS", category: "Turno", value: "+7,30h" },
-            { code: "VAA", description: "DIAS VACACIONES POR ANTIGÜEDAD", category: "Vacaciones", value: "0h (no descuenta)" },
-            { code: "VAC", description: "VACACIONES", category: "Vacaciones", value: "+7h" },
-            { code: "VAP", description: "VACACIONES PENDIENTES AÑO ANTERIOR", category: "Vacaciones", value: "+7h" },
-            { code: "VVP", description: "VACACIONES ANTIGÜEDAD AÑO ANTERIOR", category: "Vacaciones", value: "0h (no descuenta)" }
+            { code: "A", description: "ACCIDENTE LABORAL/NO LABORAL", category: "Ausencia" },
+            { code: "CON", description: "ASISTENCIA A CONGRESO", category: "Permiso" },
+            { code: "D", description: "DESCANSO", category: "Jornada/Descanso" },
+            { code: "DHU", description: "DIAS DE HUELGA", category: "Ausencia" },
+            { code: "D0H", description: "DESCANSO FESTIVO EN SÁBADO", category: "Jornada/Descanso" },
+            { code: "DLA", description: "DIAS LACTANCIA MATERNA", category: "Permiso" },
+            { code: "DPI", description: "DEBER PÚBLICO INEXCUSABLE", category: "Permiso" },
+            { code: "ENF", description: "ENFERMEDAD COMÚN/PROFESIONAL", category: "Ausencia" },
+            { code: "ESB", description: "ENFERMEDAD SIN BAJA", category: "Ausencia" },
+            { code: "ESN", description: "ENFERMEDAD SIN BAJA (REP. NÓMINA)", category: "Ausencia" },
+            { code: "FEF", description: "COMPENSACIÓN FESTIVO 24/31 DICIEMBRE", category: "Compensación" },
+            { code: "FFA", description: "PERMISO FALLECIMIENTO", category: "Permiso" },
+            { code: "G09", description: "GUARDIAS 9 HORAS", category: "Turno" },
+            { code: "GRF", description: "GUARDIA 24 HORAS FORMACIÓN", category: "Turno" },
+            { code: "LDN", description: "LIBRE DISPOSICIÓN AÑO ANTERIOR", category: "Permiso" },
+            { code: "LIB", description: "LIBRE DISPOSICIÓN", category: "Permiso" },
+            { code: "LTA", description: "LIBRE DISPOSICIÓN TRIENIOS AÑO ANTERIOR", category: "Permiso" },
+            { code: "LDT", description: "LIBRE DISPOSICIÓN TRIENIOS", category: "Permiso" },
+            { code: "LIS", description: "LIBERADO SINDICAL", category: "Permiso" },
+            { code: "MAN", description: "MAÑANAS 7 HORAS", category: "Turno" },
+            { code: "MAA", description: "MAÑANAS 7,30 HORAS", category: "Turno" },
+            { code: "MGF", description: "GUARDIA FISICA 24 HORAS", category: "Turno" },
+            { code: "MGH", description: "MAÑANA+GUARDIA FÍSICA 17 HORAS", category: "Turno" },
+            { code: "MGL", description: "MAÑANA+GUARDIA LOCALIZADA 17 HORAS", category: "Turno" },
+            { code: "MLG", description: "GUARDIA 24 HORAS LOCALIZADA", category: "Turno" },
+            { code: "MAT", description: "PERMISO MATERNIDAD", category: "Permiso" },
+            { code: "N", description: "NOCHE DE 10 HORAS", category: "Turno" },
+            { code: "PAR", description: "PERMISO PATERNIDAD", category: "Permiso" },
+            { code: "PCM", description: "PERMISO CONSULTA MÉDICA", category: "Permiso" },
+            { code: "PSC", description: "PERMISO SINDICAL COMPLETO", category: "Permiso" },
+            { code: "PSI", description: "PERMISO SINDICAL PARCIAL", category: "Permiso" },
+            { code: "MRG", description: "MAÑANA+GUARDIA FORMACIÓN 17 HORAS", category: "Turno" },
+            { code: "T", description: "TARDE DE 7 HORAS", category: "Turno" },
+            { code: "TAA", description: "TARDE DE 7,30 HORAS", category: "Turno" },
+            { code: "VAA", description: "DIAS VACACIONES POR ANTIGÜEDAD", category: "Vacaciones" },
+            { code: "VAC", description: "VACACIONES", category: "Vacaciones" },
+            { code: "VAP", description: "VACACIONES PENDIENTES AÑO ANTERIOR", category: "Vacaciones" },
+            { code: "VVP", description: "VACACIONES ANTIGÜEDAD AÑO ANTERIOR", category: "Vacaciones" }
         ].sort((a, b) => a.code.localeCompare(b.code))
     };
 
@@ -268,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function () {
         currentVacationDays = baseDays + bonusDays;
 
         vacationAntiquityYearsSpan.textContent = years;
-        totalVacationDaysSpan.innerHTML = `${currentVacationDays} <span class="text-2xl font-semibold text-slate-500">días</span>`;
+        totalVacationDaysSpan.textContent = `${currentVacationDays} días`;
         
         if (vacationChart) {
             vacationChart.data.datasets[0].data = [baseDays, bonusDays];
@@ -350,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
         currentLdDays = ldData.total;
 
         ldAntiquityYearsSpan.textContent = years;
-        totalLdDaysSpan.innerHTML = `${currentLdDays} <span class="text-2xl font-semibold text-slate-500">días</span>`;
+        totalLdDaysSpan.textContent = `${currentLdDays} días`;
         
         if (ldChart) {
             ldChart.data.datasets[0].data = [ldData.base, ldData.bonus];
@@ -424,31 +407,31 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         
         permitList.innerHTML = filteredPermits.map(permit => {
-            let permitCardHtml = `
-                <div class="border soft-accent-border soft-accent-bg p-4 rounded-lg flex flex-col cursor-pointer h-full">
-                    <h4 class="font-bold soft-text-dark">${permit.name}</h4>
-                    <p class="text-sm text-slate-700 flex-grow mt-1">${permit.details}</p>
-                    <div class="mt-3">
-                        ${permit.codes.map(code => `<span class="text-xs font-mono soft-text-dark bg-white px-2 py-1 rounded-full mr-1 border soft-border-medium">${code}</span>`).join('')}
-                    </div>
-                    ${(permit.name === 'Permiso por Maternidad' || permit.name === 'Permiso por Paternidad') ? `
-                        <div class="mt-4 pt-4 border-t border-slate-200 text-center">
-                            <span class="text-sm font-semibold ugt-text-red">Calcula Aquí Tu Permiso</span>
-                        </div>
-                    ` : ''}
+    let permitCardHtml = `
+        <div class="border soft-accent-border soft-accent-bg p-4 rounded-lg flex flex-col cursor-pointer">
+            <h4 class="font-bold soft-text-dark">${permit.name}</h4>
+            <p class="text-sm text-slate-700 flex-grow mt-1">${permit.details}</p>
+            <div class="mt-3">
+                ${permit.codes.map(code => `<span class="text-xs font-mono soft-text-dark soft-accent-bg px-2 py-1 rounded-full mr-1 border soft-border-medium">${code}</span>`).join('')}
+            </div>
+            ${(permit.name === 'Permiso por Maternidad' || permit.name === 'Permiso por Paternidad') ? `
+                <div class="mt-4 pt-4 border-t border-slate-200 text-center">
+                    <span class="text-sm font-semibold ugt-text-red">Calcula Aquí Tu Permiso</span>
                 </div>
-            `;
+            ` : ''}
+        </div>
+    `;
 
-            if (permit.name === 'Permiso por Maternidad' || permit.name === 'Permiso por Paternidad') {
-                return `
-                    <a href="https://ugtsanidadsalamanca.github.io/Permisos_Parentales" target="_blank" rel="noopener noreferrer" class="block transition-all hover:shadow-lg h-full">
-                        ${permitCardHtml}
-                    </a>
-                `;
-            } else {
-                return permitCardHtml;
-            }
-        }).join('');
+    if (permit.name === 'Permiso por Maternidad' || permit.name === 'Permiso por Paternidad') {
+        return `
+            <a href="https://ugtsanidadsalamanca.github.io/Permisos_Parentales" target="_blank" rel="noopener noreferrer" class="block transition-all hover:shadow-lg">
+                ${permitCardHtml}
+            </a>
+        `;
+    } else {
+        return permitCardHtml;
+    }
+}).join('');
     }
     
     const aidaCodeTableBody = document.getElementById('aida-code-table-body');
@@ -460,15 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
             item.description.toLowerCase().includes(filterText.toLowerCase())
         );
         
-        aidaCodeTableBody.innerHTML = filteredCodes.map(item => {
-            let valueClass = 'text-slate-700';
-            if (item.value.startsWith('+')) {
-                valueClass = 'text-green-600 font-semibold';
-            } else if (item.value.startsWith('-')) {
-                valueClass = 'text-red-600 font-semibold';
-            }
-
-            return `
+        aidaCodeTableBody.innerHTML = filteredCodes.map(item => `
             <tr class="bg-white border-b hover:bg-slate-50">
                 <td class="px-6 py-4 font-mono font-semibold soft-text-dark">${item.code}</td>
                 <td class="px-6 py-4">${item.description}</td>
@@ -480,11 +455,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         'bg-slate-100 text-slate-800 border border-slate-200'
                     }">${item.category}</span>
                 </td>
-                <td class="px-6 py-4 text-center ${valueClass}">
-                    ${item.value}
-                </td>
             </tr>
-        `}).join('');
+        `).join('');
     }
 
     function updateSummary() {
@@ -542,7 +514,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Lógica de cálculo de turnos de noche
-    const nightShiftsInput = document.getElementById('night-shifts-input'); 
+    const nightShiftsInput = document.getElementById('night-shifts-input'); // Reverted to input
     const adjustedAnnualHoursSpan = document.getElementById('adjusted-annual-hours');
     const nightShiftMessage = document.getElementById('night-shift-message');
 
@@ -551,59 +523,26 @@ document.addEventListener('DOMContentLoaded', function () {
         const baseAnnualHoursDiurno = 1533; 
 
         if (isNaN(numberOfNights) || numberOfNights < 0) {
-            adjustedAnnualHoursSpan.innerHTML = `${baseAnnualHoursDiurno} <span class="text-2xl font-semibold text-slate-500">horas</span>`;
+            adjustedAnnualHoursSpan.textContent = `${baseAnnualHoursDiurno} horas`;
             nightShiftMessage.textContent = "Introduce un número válido de noches.";
             return;
         }
 
         if (numberOfNights === 0) {
-            adjustedAnnualHoursSpan.innerHTML = `${baseAnnualHoursDiurno} <span class="text-2xl font-semibold text-slate-500">horas</span>`;
+            adjustedAnnualHoursSpan.textContent = `${baseAnnualHoursDiurno} horas`;
             nightShiftMessage.textContent = "Para turno diurno o sin noches, la jornada base es 1.533 horas.";
         } else if (numberOfNights >= 1 && numberOfNights <= 142) {
             const foundData = nightHoursData.find(item => item.nights === numberOfNights);
             if (foundData) {
-                adjustedAnnualHoursSpan.innerHTML = `${foundData.hours} <span class="text-2xl font-semibold text-slate-500">horas</span>`;
+                adjustedAnnualHoursSpan.textContent = `${foundData.hours} horas`;
                 nightShiftMessage.textContent = `Jornada según tabla oficial del BOCYL para ${numberOfNights} noches.`;
             } else {
-                adjustedAnnualHoursSpan.innerHTML = `${baseAnnualHoursDiurno} <span class="text-2xl font-semibold text-slate-500">horas</span>`;
+                adjustedAnnualHoursSpan.textContent = `${baseAnnualHoursDiurno} horas`;
                 nightShiftMessage.textContent = `No se encontró un valor exacto para ${numberOfNights} noches en la tabla.`;
             }
         } else {
-            adjustedAnnualHoursSpan.innerHTML = `N/A <span class="text-2xl font-semibold text-slate-500">horas</span>`;
+            adjustedAnnualHoursSpan.textContent = `N/A`;
             nightShiftMessage.textContent = "El número de noches está fuera del rango (1-142) de la tabla oficial.";
-        }
-    }
-    
-    // Lógica de cálculo de guardias
-    const guardiasInput = document.getElementById('guardias-input');
-    const adjustedAnnualHoursGuardiasSpan = document.getElementById('adjusted-annual-hours-guardias');
-    const guardiasMessage = document.getElementById('guardias-message');
-
-    function calculateAnnualHoursGuardias() {
-        const numberOfGuardias = parseInt(guardiasInput.value);
-        const baseAnnualHours = 1533; // Jornada diurna sin jornada complementaria
-
-        if (isNaN(numberOfGuardias) || numberOfGuardias < 0) {
-            adjustedAnnualHoursGuardiasSpan.innerHTML = `N/A <span class="text-2xl font-semibold text-slate-500">horas</span>`;
-            guardiasMessage.textContent = "Introduce un número válido de guardias.";
-            return;
-        }
-
-        if (numberOfGuardias === 0) {
-            adjustedAnnualHoursGuardiasSpan.innerHTML = `${baseAnnualHours} <span class="text-2xl font-semibold text-slate-500">horas</span>`;
-            guardiasMessage.textContent = "Sin guardias, se aplica la jornada diurna ordinaria.";
-        } else if (numberOfGuardias >= 1 && numberOfGuardias <= 35) {
-            const foundData = guardiasHoursData.find(item => item.guardias === numberOfGuardias);
-            if (foundData) {
-                adjustedAnnualHoursGuardiasSpan.innerHTML = `${foundData.hours} <span class="text-2xl font-semibold text-slate-500">horas</span>`;
-                guardiasMessage.textContent = `Jornada según tabla oficial del BOCYL para ${numberOfGuardias} guardias.`;
-            } else {
-                adjustedAnnualHoursGuardiasSpan.innerHTML = `N/A <span class="text-2xl font-semibold text-slate-500">horas</span>`;
-                guardiasMessage.textContent = `No se encontró un valor exacto para ${numberOfGuardias} guardias.`;
-            }
-        } else {
-            adjustedAnnualHoursGuardiasSpan.innerHTML = `N/A <span class="text-2xl font-semibold text-slate-500">horas</span>`;
-            guardiasMessage.textContent = "El número de guardias está fuera del rango (1-35).";
         }
     }
 
@@ -654,8 +593,7 @@ document.addEventListener('DOMContentLoaded', function () {
         updateSummary();
     });
 
-    nightShiftsInput.addEventListener('input', calculateAnnualHours); 
-    guardiasInput.addEventListener('input', calculateAnnualHoursGuardias);
+    nightShiftsInput.addEventListener('input', calculateAnnualHours); // Reverted to input listener
 
     permitSearch.addEventListener('input', () => renderPermits(permitSearch.value, permitCategoryFilter.value));
     permitCategoryFilter.addEventListener('change', () => renderPermits(permitSearch.value, permitCategoryFilter.value));
@@ -682,8 +620,8 @@ document.addEventListener('DOMContentLoaded', function () {
     updateVacationInfo();
     updateLdInfo();
     calculateAnnualHours();
-    calculateAnnualHoursGuardias();
     renderPermits();
     renderAidaCodes();
     updateSummary();
 });
+
