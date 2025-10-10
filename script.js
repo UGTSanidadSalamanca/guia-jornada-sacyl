@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
             { name: 'Permiso por Lactancia', category: 'familiares', details: '1 hora diaria o 2 fracciones de 1/2 hora, hasta los 12 meses del menor. O bien de forma acumulada: 6 semanas para la madre biológica y 5 semanas  para el otro progenitor.', codes: ['DLA'] },
             { name: 'Cuidado de familiar (Enf. muy grave)', category: 'familiares', details: 'Reducción hasta 50% de jornada (máx. 1 mes).', codes: [] },
             { name: 'Cuidado de hijo (Enf. grave)', category: 'familiares', details: 'Reducción de al menos 50% de jornada.', codes: [] },
-            { name: 'Permiso por Causa de Fuerza Mayor', category: 'familiares', details: '4 días (28 horas)/año, no consecutivos.', codes: [] },
             { name: 'Matrimonio o Pareja de Hecho', category: 'personales', details: '15 días naturales.', codes: [] },
             { name: 'Traslado de Domicilio', category: 'personales', details: '1 día hábil.', codes: [] },
             { name: 'Permiso por preparación para donación de órganos o tejidos', category: 'salud', details: 'Tiempo indispensable para asistencia a sesiones de información, informes, exámenes clínicos y prestación de consentimiento, siempre que sea durante la jornada de trabajo.', codes: [] },
