@@ -130,8 +130,8 @@ document.addEventListener('DOMContentLoaded', function () {
             { code: "FFA", description: "PERMISO FALLECIMIENTO", category: "Permiso", value: "+7h / día" },
             { code: "G09", description: "GUARDIAS 9 HORAS", category: "Turno", value: "+6–7h" },
             { code: "GRF", description: "GUARDIA 24 HORAS FORMACIÓN", category: "Turno", value: "N/A(según ponderación)" },
-            { code: "LDN", description: "LIBRE DISPOSICIÓN AÑO ANTERIOR", category: "Permiso", value: "+7h" },
-            { code: "LIB", description: "LIBRE DISPOSICIÓN", category: "Permiso", value: "+7h" },
+            { code: "LDN", description: "LIBRE DISPOSICIÓN AÑO ANTERIOR", category: "Permiso", value: "0h" },
+            { code: "LIB", description: "LIBRE DISPOSICIÓN", category: "Permiso", value: "-7h" },
             { code: "LTA", description: "LIBRE DISPOSICIÓN TRIENIOS AÑO ANTERIOR", category: "Permiso", value: "0h (no descuenta)" },
             { code: "LDT", description: "LIBRE DISPOSICIÓN TRIENIOS", category: "Permiso", value: "0h (no descuenta)" },
             { code: "LIS", description: "LIBERADO SINDICAL", category: "Permiso", value: "+7h / día" },
@@ -151,9 +151,9 @@ document.addEventListener('DOMContentLoaded', function () {
             { code: "T", description: "TARDE DE 7 HORAS", category: "Turno", value: "+7h" },
             { code: "TAA", description: "TARDE DE 7,30 HORAS", category: "Turno", value: "+7,30h" },
             { code: "VAA", description: "DIAS VACACIONES POR ANTIGÜEDAD", category: "Vacaciones", value: "0h (no descuenta)" },
-            { code: "VAC", description: "VACACIONES", category: "Vacaciones", value: "+7h" },
+            { code: "VAC", description: "VACACIONES", category: "Vacaciones", value: "-7h" },
             { code: "VAP", description: "VACACIONES PENDIENTES AÑO ANTERIOR", category: "Vacaciones", value: "+7h" },
-            { code: "VVP", description: "VACACIONES ANTIGÜEDAD AÑO ANTERIOR", category: "Vacaciones", value: "0h (no descuenta)" }
+            { code: "VVP", description: "VACACIONES ANTIGÜEDAD AÑO ANTERIOR", category: "Vacaciones", value: "+7h (no descuenta)" }
         ].sort((a, b) => a.code.localeCompare(b.code))
     };
 
