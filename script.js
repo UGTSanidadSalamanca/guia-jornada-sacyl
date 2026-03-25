@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
             { name: 'Permiso sin sueldo (Asuntos Propios)', category: 'personales', details: 'Máximo 3 meses cada 2 años.', codes: [] },
             { name: 'Permiso Parental (Retribuído según últimas sentencias)', category: 'familiares', details: '8 semanas por hijos menores de 8 años (en caso de duda consulta a tu sindicato).', codes: [] },
             { name: 'Consulta Médica (propia o familiar)', category: 'salud', details: 'Tiempo indispensable y justificado.', codes: ['PCM'] },
-            { name: 'Fallecimiento de Familiar', category: 'familiares', details: '2-5 días hábiles según parentesco.', codes: ['FFA'] },
+            { name: 'Fallecimiento de Familiar', category: 'familiares', details: '2-5 días hábiles según parentesco y localidad.', codes: ['FFA'] },
             { name: 'Enfermedad sin baja (sin IT)', category: 'salud', details: 'Hasta 4 días/año (máx. 3 consecutivos).', codes: ['ENF', 'ESB', 'ESN'] },
             { name: 'Accidente Laboral/No Laboral', category: 'salud', details: 'Tiempo de baja según prescripción.', codes: ['A'] },
             { name: 'Asistencia a Exámenes Oficiales', category: 'formacion', details: 'Día completo (finales) o tiempo indispensable (parciales).', codes: ['CON'] },
