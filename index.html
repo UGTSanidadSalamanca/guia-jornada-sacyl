@@ -1,37 +1,28 @@
-                            <input type="number" id="ld-base-taken-input" min="0" value="0" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-soft-dark focus:border-primary-soft-dark transition">
-                            <div class="mt-3 text-center">
-                                <p class="text-slate-600">Restantes (Base):</p>
-                                <p id="ld-base-remaining-days" class="text-2xl font-bold soft-text-dark">0 días</p>
-                            </div>
-                            <label for="ld-trienios-taken-input" class="block font-semibold text-slate-700 mt-4 mb-2">Trienios ya disfrutadas/solicitadas:</label>
-                            <input type="number" id="ld-trienios-taken-input" min="0" value="0" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-soft-dark focus:border-primary-soft-dark transition">
-                            <div class="mt-3 text-center">
-                                <p class="text-slate-600">Restantes (Trienios):</p>
-                                <p id="ld-trienios-remaining-days" class="text-2xl font-bold soft-text-dark">0 días</p>
-                            </div>
-                            <div class="mt-4 pt-4 border-t border-slate-200 text-center">
-                                <p class="text-slate-600">Total Libre Disposición Restantes:</p>
-                                <p id="ld-total-remaining-days" class="text-3xl font-bold soft-text-dark">0 días</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Calculadora Interactiva de Días de Descanso Anuales (2027)</title>
+    <!-- Enlace a Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Enlace a Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Enlace a Google Fonts para la fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Enlace a tu archivo de estilos CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div class="container mx-auto p-4 md:p-8">
         
-        <footer class="text-center mt-12 text-slate-600 text-sm">
-            <p class="mb-2">Esta es una guía interpretativa no oficial.
-                Para información vinculante, consulta siempre a tu sindicato UGT, la normativa vigente, las fuentes oficiales de SACYL y la Junta de Castilla y León. Creado en 2025. Actualizado a 2027.</p>
-            <div class="font-semibold ugt-text-red">
-                <p>Sección sindical UGT</p>
-                <p>Edificio 1, Hospital Virgen Vega, semisótano</p>
-                <p>C/ P.° de San Vicente, 58-182, 37007 Salamanca</p>
-                <p>e-mail: <a href="mailto:sanidad.salamanca@ugt-sp.upt.org" class="underline ugt-text-red">sanidad.salamanca@ugt-sp.upt.org</a></p>
-                <p>Tel. 923 29 1 00- Ext. 55598 y 55610</p>
-            </div>
-        </footer>
-    </div>
-    <!-- Enlace a tu archivo JavaScript personalizado -->
-    <script src="script.js"></script>
-</body>
-</html>
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-5xl font-extrabold ugt-text-red mb-4 leading-tight flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+                <img src="https://placehold.co/60x60/E4002B/FFFFFF?text=UGT" alt="Logotipo de UGT Sanidad Salamanca" class="h-12 w-12 md:h-16 md:w-16 rounded-full border-4 border-white shadow-md">
+                <span class="block">UGT Sanidad Salamanca</span>
+                <span class="block text-teal-700 text-xl md:text-3xl font-bold mt-0 md:mt-2">Tu Calculadora Interactiva de Días de Descanso Anuales (2027)</span>
+            </h1>
+            <div class="mb-3">
