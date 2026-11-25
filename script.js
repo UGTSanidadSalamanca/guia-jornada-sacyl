@@ -91,20 +91,24 @@ document.addEventListener('DOMContentLoaded', function () {
             { code: 'LTA', name: 'LD Trienios Año Anterior' },
         ],
         permits: [
-            { name: 'Permiso por Maternidad', category: 'familiares', details: '19 semanas (6 semanas obligatorio tras parto, 11 semanas flexibles hasta los 12 meses de menor y 2 semanas más hasta que el menor cumpla 8 años).', codes: ['MAT'] },
-            { name: 'Permiso por Paternidad', category: 'familiares', details: '19 semanas (6 semanas obligatorio tras parto, 11 semanas flexibles hasta los 12 meses de menor y 2 semanas más hasta que el menor cumpla 8 años).', codes: ['PAR'] },
+            {"name":"Adopción, guarda y acogimiento","category":"familiares","details":"Para hechos causantes desde el 26/11/2026: 20 semanas (6 obligatorias tras el hecho causante, 11 hasta los 12 meses y 3 hasta los 8 años); monoparentalidad: 34 (6+22+6). La ampliación de 1 o 2 semanas se podrá solicitar desde el 01/03/2027. Para hechos anteriores, consultar el régimen previo.","codes":["Pr"],"article":"49.1.b","assistant":"parental","updated":true},
+            {"name":"Cuidados paliativos de familiar","category":"familiares","details":"Reducción de jornada con disminución retributiva para cuidado directo de cónyuge, pareja de hecho o familiar hasta segundo grado, incluido familiar consanguíneo de la pareja de hecho.","codes":[],"article":"48.h","assistant":"paliativos","updated":true},
+            {"name":"Acompañamiento en la prestación de ayuda para morir","category":"personales","details":"Permiso el día de la prestación si la persona ha sido designada como acompañante.","codes":["Pr"],"article":"48.n","assistant":"ayuda","updated":true},
+            {"name":"Hospitalización, accidente o enfermedad grave","category":"familiares","details":"5 días hábiles para cónyuge, pareja de hecho, primer grado o conviviente que requiera cuidado efectivo; 4 días para segundo grado. Incluye intervención sin hospitalización con reposo domiciliario.","codes":["Pr"],"article":"48.a","assistant":"hospital","updated":true},
+            {"name":"Nacimiento y cuidado del menor (maternidad)","category":"familiares","details":"Para hechos causantes desde el 26/11/2026: 20 semanas (6 obligatorias, 11 hasta los 12 meses y 3 hasta los 8 años); monoparentalidad: 34 (6+22+6). La ampliación de 1 o 2 semanas se podrá solicitar desde el 01/03/2027. Para hechos anteriores, consultar el régimen previo.","codes":["MAT"],"article":"49.1.a","assistant":"parental","updated":true},
+            {"name":"Nacimiento y cuidado del menor (otro progenitor)","category":"familiares","details":"Para hechos causantes desde el 26/11/2026: 20 semanas (6 obligatorias, 11 hasta los 12 meses y 3 hasta los 8 años); monoparentalidad: 34 (6+22+6). La ampliación de 1 o 2 semanas se podrá solicitar desde el 01/03/2027. Para hechos anteriores, consultar el régimen previo.","codes":["PAR"],"article":"49.1.a","assistant":"parental","updated":true},
             { name: 'Permiso por Lactancia', category: 'familiares', details: '1 hora diaria o 2 fracciones de 1/2 hora, hasta los 12 meses del menor. O bien de forma acumulada: 6 semanas para la madre biológica y 5 semanas  para el otro progenitor.', codes: ['DLA'] },
-            { name: 'Cuidado de familiar (Enf. muy grave)', category: 'familiares', details: 'Reducción hasta 50% de jornada (máx. 1 mes).', codes: [] },
-            { name: 'Cuidado de hijo (Enf. grave)', category: 'familiares', details: 'Reducción de al menos 50% de jornada.', codes: [] },
+            {"name":"Cuidado de familiar por enfermedad muy grave","category":"familiares","details":"Reducción retribuida de hasta el 50 % durante un máximo de un mes por familiar de primer grado.","codes":[],"article":"48.i","assistant":"grave","updated":true},
+            {"name":"Cuidado de hijo con cáncer u otra enfermedad grave","category":"familiares","details":"Reducción de al menos el 50 %, con retribuciones íntegras si se cumplen los requisitos. Incluye monoparentalidad, supuestos de cuidado de personas distintas, reparto excepcional y prolongación por discapacidad o dependencia.","codes":[],"article":"49.1.e","assistant":"hijo","updated":true},
             { name: 'Matrimonio o Pareja de Hecho', category: 'personales', details: '15 días naturales.', codes: [] },
             { name: 'Traslado de Domicilio', category: 'personales', details: '1 día hábil.', codes: [] },
             { name: 'Permiso por preparación para donación de órganos o tejidos', category: 'salud', details: 'Tiempo indispensable para asistencia a sesiones de información, informes, exámenes clínicos y prestación de consentimiento, siempre que sea durante la jornada de trabajo.', codes: [] },
             { name: 'Asuntos Particulares (Libre Disposición)', category: 'personales', details: '6 días laborables por año.', codes: ['LIB', 'LDN'] },
             { name: 'Asuntos Particulares por Antigüedad', category: 'personales', details: '+2 días (6º trienio), +1 por trienio (desde el 8º).', codes: ['LDT', 'LTA'] },
             { name: 'Permiso sin sueldo (Asuntos Propios)', category: 'personales', details: 'Máximo 3 meses cada 2 años.', codes: [] },
-            { name: 'Permiso Parental (Retribuído según últimas sentencias)', category: 'familiares', details: '8 semanas por hijos menores de 8 años (en caso de duda consulta a tu sindicato).', codes: [] },
+            {"name":"Permiso parental (hasta 8 semanas)","category":"familiares","details":"No retribuido según el TREBEP, hasta los 8 años del menor. Disfrute por semanas completas, con preaviso de 15 días y condiciones de servicio. Consultar resoluciones judiciales aplicables.","codes":[],"article":"49.1.c","assistant":"ocho","updated":true},
             { name: 'Consulta Médica (propia o familiar)', category: 'salud', details: 'Tiempo indispensable y justificado.', codes: ['PCM'] },
-            { name: 'Fallecimiento de Familiar', category: 'familiares', details: '2-5 días hábiles según parentesco y localidad.', codes: ['FFA'] },
+            {"name":"Permiso por duelo en caso de fallecimiento","category":"familiares","details":"10 días hábiles por cónyuge, pareja de hecho, padres o hijos; 3 días para primer grado de afinidad o segundo de consanguinidad o afinidad, 5 en distinta localidad. Inicio dentro de las cuatro semanas posteriores; disfrute discontinuo si las necesidades del servicio lo permiten.","codes":["FFA"],"article":"48.a bis","assistant":"duelo","updated":true},
             { name: 'Enfermedad sin baja (sin IT)', category: 'salud', details: 'Hasta 4 días/año (máx. 3 consecutivos).', codes: ['ENF', 'ESB', 'ESN'] },
             { name: 'Accidente Laboral/No Laboral', category: 'salud', details: 'Tiempo de baja según prescripción.', codes: ['A'] },
             { name: 'Asistencia a Exámenes Oficiales', category: 'formacion', details: 'Día completo (finales) o tiempo indispensable (parciales).', codes: ['CON'] },
@@ -407,50 +411,74 @@ document.addEventListener('DOMContentLoaded', function () {
     const permitSearch = document.getElementById('permit-search');
     const permitCategoryFilter = document.getElementById('permit-category-filter');
 
+    const normalizePermit = value => String(value).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const reformFilter = document.createElement('label');
+    reformFilter.className = 'flex items-center gap-2 mb-4 text-sm';
+    reformFilter.innerHTML = '<input type="checkbox" id="permit-reform-only"> Mostrar solo permisos nuevos o revisados';
+    permitList.before(reformFilter);
+    const notice = document.createElement('div');
+    notice.className = 'border border-red-200 bg-red-50 rounded-lg p-3 mb-4 text-sm';
+    notice.innerHTML = '<strong>Actualización normativa: RDL 42/2026.</strong> En vigor desde el 26/11/2026. Régimen general del personal estatutario. <a class="underline" href="https://www.boe.es/buscar/doc.php?id=BOE-A-2026-24700" target="_blank" rel="noopener">Consultar BOE</a>. Pr identifica provisionalmente permisos retribuidos; no es un código AIDA confirmado.';
+    reformFilter.before(notice);
+    reformFilter.addEventListener('change', () => renderPermits(permitSearch.value, permitCategoryFilter.value));
     function renderPermits(filterText = '', category = 'all') {
-        const filteredPermits = data.permits.filter(permit => {
-            const permitName = permit.name ? permit.name.toLowerCase() : '';
-            const permitDetails = permit.details ? permit.details.toLowerCase() : '';
-
-            const matchesCategory = category === 'all' || permit.category === category;
-            const matchesText = permitName.includes(filterText.toLowerCase()) || permitDetails.includes(filterText.toLowerCase());
-            return matchesCategory && matchesText;
-        });
-
-        if (filteredPermits.length === 0) {
-            permitList.innerHTML = `<p class="text-slate-500 col-span-full text-center">No se encontraron permisos que coincidan con la búsqueda.</p>`;
-            return;
-        }
-        
-        permitList.innerHTML = filteredPermits.map(permit => {
-            let permitCardHtml = `
-                <div class="border soft-accent-border soft-accent-bg p-4 rounded-lg flex flex-col cursor-pointer h-full">
-                    <h4 class="font-bold soft-text-dark">${permit.name}</h4>
-                    <p class="text-sm text-slate-700 flex-grow mt-1">${permit.details}</p>
-                    <div class="mt-3">
-                        ${permit.codes.map(code => `<span class="text-xs font-mono soft-text-dark bg-white px-2 py-1 rounded-full mr-1 border soft-border-medium">${code}</span>`).join('')}
-                    </div>
-                    ${(permit.name === 'Permiso por Maternidad' || permit.name === 'Permiso por Paternidad') ? `
-                        <div class="mt-4 pt-4 border-t border-slate-200 text-center">
-                            <span class="text-sm font-semibold ugt-text-red">Calcula Aquí Tu Permiso</span>
-                        </div>
-                    ` : ''}
-                </div>
-            `;
-
-            if (permit.name === 'Permiso por Maternidad' || permit.name === 'Permiso por Paternidad') {
-                return `
-                    <a href="https://ugtsanidadsalamanca.github.io/Permisos_Parentales" target="_blank" rel="noopener noreferrer" class="block transition-all hover:shadow-lg h-full">
-                        ${permitCardHtml}
-                    </a>
-                `;
-            } else {
-                return permitCardHtml;
-            }
-        }).join('');
+        const filtered = data.permits.filter(p => (category === 'all' || p.category === category) &&
+            (!reformFilter.querySelector('input').checked || p.updated) &&
+            normalizePermit([p.name,p.details,p.codes.join(' '),p.article || ''].join(' ')).includes(normalizePermit(filterText)));
+        permitList.innerHTML = filtered.map(p => `
+            <div class="border soft-accent-border soft-accent-bg p-4 rounded-lg flex flex-col h-full">
+              ${p.updated ? '<span class="text-xs ugt-text-red font-semibold">Revisado · 25/11/2026</span>' : ''}
+              <h4 class="font-bold soft-text-dark">${p.name}</h4>
+              <p class="text-sm text-slate-700 mt-1 flex-grow">${p.details}</p>
+              <div class="mt-3">${p.codes.map(c=>`<span class="text-xs font-mono bg-white px-2 py-1 rounded-full mr-1 border">${c}${c==='Pr'?' (provisional)':''}</span>`).join('')}</div>
+              ${p.article ? `<a class="text-xs underline mt-3" href="https://www.boe.es/buscar/doc.php?id=BOE-A-2026-24700" target="_blank" rel="noopener">Art. ${p.article} TREBEP</a>` : ''}
+              ${p.assistant ? `<details class="mt-3 bg-white rounded p-2"><summary class="cursor-pointer font-semibold soft-text-dark">Consultar mi permiso</summary><div data-assistant="${p.assistant}" class="mt-2 text-sm"></div></details>` : ''}
+            </div>`).join('') || '<p class="col-span-full text-center">No se encontraron permisos.</p>';
+        permitList.querySelectorAll('[data-assistant]').forEach(buildPermitAssistant);
     }
-    
-    const aidaCodeTableBody = document.getElementById('aida-code-table-body');
+    function buildPermitAssistant(el) {
+        const type=el.dataset.assistant;
+        const yes=[['yes','Sí'],['no','No']];
+        const kin=[['first','Cónyuge, pareja de hecho, padres o hijos'],['aff','Primer grado de afinidad'],['second','Segundo grado de consanguinidad o afinidad'],['cohab','Otra persona conviviente que requiere cuidado efectivo'],['other','Otro supuesto']];
+        const field=(id,label,opts)=>'<label class="block mt-2">'+label+'<select data-field="'+id+'" class="block w-full border rounded p-1">'+opts.map(([v,t])=>'<option value="'+v+'">'+t+'</option>').join('')+'</select></label>';
+        const date=(id,label)=>'<label class="block mt-2">'+label+'<input data-field="'+id+'" type="date" class="block w-full border rounded p-1"></label>';
+        let html='';
+        if(type==='duelo') html=field('kin','Parentesco',kin)+field('local','¿Fallecimiento en distinta localidad?',yes)+date('date','Fecha del fallecimiento');
+        if(type==='hospital') html=field('kin','Parentesco o convivencia',kin)+field('cause','Motivo',[['hospital','Hospitalización'],['grave','Accidente o enfermedad grave'],['reposo','Intervención sin hospitalización con reposo domiciliario'],['other','Otro supuesto']]);
+        if(type==='parental') html=date('date','Fecha del hecho causante')+field('mono','¿Familia monoparental?',yes);
+        if(type==='ocho') html=field('age','¿Menor de ocho años?',yes)+field('used','Semanas ya disfrutadas',Array.from({length:9},(_,i)=>[String(i),String(i)]));
+        if(type==='grave') html=field('kin','¿Familiar de primer grado?',yes)+field('serious','¿Enfermedad muy grave?',yes);
+        if(type==='paliativos') html=field('kin','Parentesco',kin)+field('direct','¿Cuidado directo y cuidados paliativos acreditados?',yes);
+        if(type==='ayuda') html=field('designated','¿Has sido designado acompañante?',yes);
+        if(type==='hijo') html=field('care','¿Necesidad acreditada de cuidado directo, continuo y permanente por cáncer u otra enfermedad grave?',yes)+field('age','Edad',[['minor','Menor de 18'],['23','18 a 22'],['26','23 a 25'],['older','26 o más']])+field('family','Situación familiar',[['mono','Monoparental y trabaja'],['both','Ambos progenitores trabajan'],['other','Otra situación']]);
+        el.innerHTML=html+'<button type="button" class="mt-3 w-full rounded p-2 ugt-bg-red text-white">Consultar</button><p aria-live="polite" class="mt-2 font-semibold"></p><p class="text-xs mt-2">Orientativo. Consultar mejoras y requisitos de SACYL; no calcula turnos.</p>';
+        el.querySelector('button').addEventListener('click',()=>{
+            const v=id=>el.querySelector('[data-field="'+id+'"]')?.value;
+            let out='';
+            if(type==='duelo'){
+                const d=v('date'), k=v('kin');
+                if(!d) out='Introduce la fecha.';
+                else if(d<'2026-11-26') out='Hecho anterior a la reforma: consultar régimen anterior.';
+                else if(['first','aff','second'].includes(k)){
+                    const n=k==='first'?10:v('local')==='yes'?5:3;
+                    const limit=new Date(d+'T12:00:00Z');limit.setUTCDate(limit.getUTCDate()+28);
+                    out=n+' días hábiles. Inicio orientativo hasta '+limit.toLocaleDateString('es-ES',{timeZone:'UTC'})+'. Discontinuo sujeto a necesidades del servicio.';
+                } else out='Sin derecho específico por este parentesco en el régimen general; consultar mejoras.';
+            }
+            if(type==='hospital') out=v('cause')==='other'?'Consultar supuesto concreto.':v('kin')==='second'?'4 días hábiles.':['first','aff','cohab'].includes(v('kin'))?'5 días hábiles si se cumplen los requisitos.':'Consultar posibles mejoras.';
+            if(type==='parental'){
+                const d=v('date'),m=v('mono')==='yes';
+                out=!d?'Introduce la fecha.':d>='2026-11-26'?(m?'34 semanas (6+22+6).':'20 semanas (6+11+3).')+' Ampliación solicitable desde el 01/03/2027.':d>='2025-07-31'?(m?'32 semanas.':'19 semanas por progenitor.'):'Consultar régimen histórico y jurisprudencia.';
+            }
+            if(type==='ocho') out=v('age')==='yes'?(8-Number(v('used')))+' semanas como máximo pendientes, no retribuidas según TREBEP.':'No corresponde por edad en el régimen general.';
+            if(type==='grave') out=v('kin')==='yes'&&v('serious')==='yes'?'Hasta el 50 % de reducción retribuida durante un mes.':'Consultar otras modalidades de cuidado.';
+            if(type==='paliativos') out=v('direct')==='yes'&&['first','aff','second'].includes(v('kin'))?'Posible reducción de jornada con disminución retributiva. Consultar porcentaje aplicable.':'Consultar requisitos y posibles otros derechos.';
+            if(type==='ayuda') out=v('designated')==='yes'?'Permiso retribuido el día de la prestación.':'No se cumple el requisito de designación.';
+            if(type==='hijo') out=v('care')==='yes'&&v('family')!=='other'?'Posible reducción de al menos el 50 %. '+(v('age')==='minor'?'Verificar requisitos de retribución íntegra.':'Verificar diagnóstico anterior a los 18 años, límites de edad, discapacidad/dependencia y convivencia según proceda.'):'Requiere valoración individual.';
+            el.querySelector('[aria-live]').textContent=out;
+        });
+    }
+        const aidaCodeTableBody = document.getElementById('aida-code-table-body');
     const aidaCodeSearch = document.getElementById('aida-code-search');
 
     function renderAidaCodes(filterText = '') {
