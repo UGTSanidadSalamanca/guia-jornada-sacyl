@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
             {"name":"Hospitalización, accidente o enfermedad grave","category":"familiares","details":"5 días hábiles para cónyuge, pareja de hecho, primer grado o conviviente que requiera cuidado efectivo; 4 días para segundo grado. Incluye intervención sin hospitalización con reposo domiciliario.","codes":["Pr"],"article":"48.a","assistant":"hospital","updated":true},
             {"name":"Nacimiento y cuidado del menor (maternidad)","category":"familiares","details":"Para hechos causantes desde el 26/11/2026: 20 semanas (6 obligatorias, 11 hasta los 12 meses y 3 hasta los 8 años); monoparentalidad: 34 (6+22+6). La ampliación de 1 o 2 semanas se podrá solicitar desde el 01/03/2027. Para hechos anteriores, consultar el régimen previo.","codes":["MAT"],"article":"49.1.a","assistant":"parental","updated":true},
             {"name":"Nacimiento y cuidado del menor (otro progenitor)","category":"familiares","details":"Para hechos causantes desde el 26/11/2026: 20 semanas (6 obligatorias, 11 hasta los 12 meses y 3 hasta los 8 años); monoparentalidad: 34 (6+22+6). La ampliación de 1 o 2 semanas se podrá solicitar desde el 01/03/2027. Para hechos anteriores, consultar el régimen previo.","codes":["PAR"],"article":"49.1.a","assistant":"parental","updated":true},
-            { name: 'Permiso por Lactancia', category: 'familiares', details: '1 hora diaria o 2 fracciones de 1/2 hora, hasta los 12 meses del menor. O bien de forma acumulada: 6 semanas para la madre biológica y 5 semanas  para el otro progenitor.', codes: ['DLA'] },
+            { name: 'Permiso por Lactancia', category: 'familiares', details: '1 hora diaria o dos fracciones de media hora hasta los 12 meses. Derecho individual; acumulación en jornadas completas tras los periodos de descanso obligatorio y flexible hasta los 12 meses. La guía anterior recogía 6 semanas para madre biológica y 5 para otro progenitor; confirmar su cálculo y fundamento específico en SACYL.', codes: ['DLA'], article: '48.f', assistant: 'lactancia', updated: true },
             {"name":"Cuidado de familiar por enfermedad muy grave","category":"familiares","details":"Reducción retribuida de hasta el 50 % durante un máximo de un mes por familiar de primer grado.","codes":[],"article":"48.i","assistant":"grave","updated":true},
             {"name":"Cuidado de hijo con cáncer u otra enfermedad grave","category":"familiares","details":"Reducción de al menos el 50 %, con retribuciones íntegras si se cumplen los requisitos. Incluye monoparentalidad, supuestos de cuidado de personas distintas, reparto excepcional y prolongación por discapacidad o dependencia.","codes":[],"article":"49.1.e","assistant":"hijo","updated":true},
             { name: 'Matrimonio o Pareja de Hecho', category: 'personales', details: '15 días naturales.', codes: [] },
@@ -439,13 +439,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function buildPermitAssistant(el) {
         const type=el.dataset.assistant;
         const yes=[['yes','Sí'],['no','No']];
-        const kin=[['first','Cónyuge, pareja de hecho, padres o hijos'],['aff','Primer grado de afinidad'],['second','Segundo grado de consanguinidad o afinidad'],['cohab','Otra persona conviviente que requiere cuidado efectivo'],['other','Otro supuesto']];
-        const field=(id,label,opts)=>'<label class="block mt-2">'+label+'<select data-field="'+id+'" class="block w-full border rounded p-1">'+opts.map(([v,t])=>'<option value="'+v+'">'+t+'</option>').join('')+'</select></label>';
+        const kin=[['first','Cónyuge, pareja de hecho, padres o hijos'],['aff','Primer grado de afinidad'],['second','Segundo grado de consanguinidad o afinidad'],['partnerkin','Familiar consanguíneo de la pareja de hecho (consultar vínculo)'],['cohab','Otra persona conviviente que requiere cuidado efectivo'],['other','Otro supuesto']];
+        const field=(id,label,opts)=>'<label class="block mt-2">'+label+'<select data-field="'+id+'" class="block w-full border rounded p-1">'+[['','Selecciona una opción'],...opts].map(([v,t])=>'<option value="'+v+'">'+t+'</option>').join('')+'</select></label>';
         const date=(id,label)=>'<label class="block mt-2">'+label+'<input data-field="'+id+'" type="date" class="block w-full border rounded p-1"></label>';
         let html='';
         if(type==='duelo') html=field('kin','Parentesco',kin)+field('local','¿Fallecimiento en distinta localidad?',yes)+date('date','Fecha del fallecimiento');
         if(type==='hospital') html=field('kin','Parentesco o convivencia',kin)+field('cause','Motivo',[['hospital','Hospitalización'],['grave','Accidente o enfermedad grave'],['reposo','Intervención sin hospitalización con reposo domiciliario'],['other','Otro supuesto']]);
-        if(type==='parental') html=date('date','Fecha del hecho causante')+field('mono','¿Familia monoparental?',yes);
+        if(type==='parental') html=date('date','Fecha del hecho causante')+field('mono','¿Familia monoparental?',yes)+'<p class="text-xs mt-2">La <a href="https://ugtsanidadsalamanca.github.io/Permisos_Parentales" target="_blank" rel="noopener" class="underline">guía parental de 2025</a> aún no incorpora el RDL 42/2026; no uses sus resultados para hechos nuevos.</p>';
+        if(type==='lactancia') html=field('age','¿Menor de 12 meses?',yes)+field('mode','Modalidad',[['daily','Ausencia diaria'],['reduce','Reducción al inicio o final'],['accumulate','Acumulación en jornadas completas']]);
         if(type==='ocho') html=field('age','¿Menor de ocho años?',yes)+field('used','Semanas ya disfrutadas',Array.from({length:9},(_,i)=>[String(i),String(i)]));
         if(type==='grave') html=field('kin','¿Familiar de primer grado?',yes)+field('serious','¿Enfermedad muy grave?',yes);
         if(type==='paliativos') html=field('kin','Parentesco',kin)+field('direct','¿Cuidado directo y cuidados paliativos acreditados?',yes);
@@ -455,6 +456,7 @@ document.addEventListener('DOMContentLoaded', function () {
         el.querySelector('button').addEventListener('click',()=>{
             const v=id=>el.querySelector('[data-field="'+id+'"]')?.value;
             let out='';
+            if(Array.from(el.querySelectorAll('[data-field]')).some(f=>!f.value)){el.querySelector('[aria-live]').textContent='Completa todas las preguntas.';return;}
             if(type==='duelo'){
                 const d=v('date'), k=v('kin');
                 if(!d) out='Introduce la fecha.';
@@ -468,11 +470,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if(type==='hospital') out=v('cause')==='other'?'Consultar supuesto concreto.':v('kin')==='second'?'4 días hábiles.':['first','aff','cohab'].includes(v('kin'))?'5 días hábiles si se cumplen los requisitos.':'Consultar posibles mejoras.';
             if(type==='parental'){
                 const d=v('date'),m=v('mono')==='yes';
-                out=!d?'Introduce la fecha.':d>='2026-11-26'?(m?'34 semanas (6+22+6).':'20 semanas (6+11+3).')+' Ampliación solicitable desde el 01/03/2027.':d>='2025-07-31'?(m?'32 semanas.':'19 semanas por progenitor.'):'Consultar régimen histórico y jurisprudencia.';
+                out=!d?'Introduce la fecha.':d>='2026-11-26'?(m?'34 semanas (6+22+6).':'20 semanas (6+11+3).')+' Ampliación solicitable desde el 01/03/2027. No incluye ampliaciones especiales por discapacidad, parto múltiple u hospitalización neonatal.':d>='2025-07-31'?(m?'32 semanas.':'19 semanas por progenitor.'):'Consultar régimen histórico y jurisprudencia.';
             }
+            if(type==='lactancia') out=v('age')==='no'?'Fuera del límite ordinario de 12 meses. Consultar particularidades.':v('mode')==='daily'?'Una hora de ausencia diaria, divisible en dos fracciones.':v('mode')==='reduce'?'Media hora al inicio y al final, o una hora al inicio o al final.':'Posible acumulación en jornadas completas tras los periodos 1.º y 2.º del art. 49.1.a/b. Confirmar cálculo específico con SACYL.';
             if(type==='ocho') out=v('age')==='yes'?(8-Number(v('used')))+' semanas como máximo pendientes, no retribuidas según TREBEP.':'No corresponde por edad en el régimen general.';
             if(type==='grave') out=v('kin')==='yes'&&v('serious')==='yes'?'Hasta el 50 % de reducción retribuida durante un mes.':'Consultar otras modalidades de cuidado.';
-            if(type==='paliativos') out=v('direct')==='yes'&&['first','aff','second'].includes(v('kin'))?'Posible reducción de jornada con disminución retributiva. Consultar porcentaje aplicable.':'Consultar requisitos y posibles otros derechos.';
+            if(type==='paliativos') out=v('direct')==='yes'&&['first','aff','second','partnerkin'].includes(v('kin'))?'Posible reducción de jornada con disminución retributiva. Consultar porcentaje aplicable.':'Consultar requisitos y posibles otros derechos.';
             if(type==='ayuda') out=v('designated')==='yes'?'Permiso retribuido el día de la prestación.':'No se cumple el requisito de designación.';
             if(type==='hijo') out=v('care')==='yes'&&v('family')!=='other'?'Posible reducción de al menos el 50 %. '+(v('age')==='minor'?'Verificar requisitos de retribución íntegra.':'Verificar diagnóstico anterior a los 18 años, límites de edad, discapacidad/dependencia y convivencia según proceda.'):'Requiere valoración individual.';
             el.querySelector('[aria-live]').textContent=out;
